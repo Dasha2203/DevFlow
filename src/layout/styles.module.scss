@@ -1,0 +1,10 @@
+.main {
+  flex-grow: 1;
+  padding: 16px;
+  transition: margin 0.3s ease;
+
+  @media (max-width: 600px) {
+    margin-left: 0;
+    width: 100%;
+  }
+}

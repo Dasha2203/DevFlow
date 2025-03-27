@@ -24,7 +24,11 @@
 
     "baseUrl": "./",
     "paths": {
+      "@src/*": ["src/*"],
+      "@store/*": ["src/store/*"],
       "@api/*": ["src/api/*"],
+      "@modules/*": ["src/modules/*"],
+      "@components/*": ["src/components/*"],
       "@services/*": ["src/api/services/*"]
     }
   },
