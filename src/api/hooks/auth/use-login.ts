@@ -16,8 +16,11 @@ const useLogin = () => {
       const userData = await login(credentials);
       setUser(userData);
     } catch (err) {
-      setError('Failed to log in. Check the entered data.');
-      console.log(err);
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Authentication Error');
+      }
     } finally {
       setLoading(false);
     }

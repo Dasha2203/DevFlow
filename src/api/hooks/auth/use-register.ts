@@ -1,8 +1,7 @@
-import { useCallback, useState } from 'react';
-import { AxiosError } from 'axios';
-import { User } from '@api/types/user.types';
 import { Credentials } from '@api/types';
+import { User } from '@api/types/user.types';
 import { register } from '@services/auth';
+import { useCallback, useState } from 'react';
 
 const useRegister = () => {
   const [loading, setLoading] = useState<boolean>(false);
@@ -17,16 +16,10 @@ const useRegister = () => {
       const userData = await register(credentials);
       setUser(userData);
     } catch (err) {
-      if (err instanceof AxiosError) {
-        if (err.response?.data?.errors) {
-          setError('You have entered incorrect data');
-        } else {
-          console.log('Error:', err.response?.data?.message || err.message);
-          setError('Something went wrong');
-        }
+      if (err instanceof Error) {
+        setError(err.message);
       } else {
-        console.error('Unexpected error:', err);
-        setError('Something went wrong');
+        setError('Registration error');
       }
     } finally {
       setLoading(false);
