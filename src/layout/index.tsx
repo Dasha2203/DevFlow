@@ -1,7 +1,7 @@
 import { Box, Toolbar } from '@mui/material';
-import Header from '@src/modules/Header';
-import Sidebar from '@src/modules/Sidebar';
-import { drawerWidth } from '@src/modules/Sidebar/const';
+import Header from '@src/modules/header';
+import Sidebar from '@src/modules/sidebar';
+import { drawerWidth } from '@src/modules/sidebar/const';
 import { useAppSelector } from '@src/store/hooks';
 import { Outlet } from 'react-router';
 import styles from './styles.module.scss';

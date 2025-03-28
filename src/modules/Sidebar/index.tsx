@@ -9,7 +9,7 @@ import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import { Divider, Drawer, IconButton } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { toggleMenu } from '@store/slices/menu-slice';
-import List from './components/List';
+import List from './components/list';
 import { drawerWidth } from './const';
 import styles from './styles.module.scss';
 
