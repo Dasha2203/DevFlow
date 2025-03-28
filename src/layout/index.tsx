@@ -1,10 +1,9 @@
 import { Box, Toolbar } from '@mui/material';
-import Header from '@src/modules/header';
-import Sidebar from '@src/modules/sidebar';
-import { drawerWidth } from '@src/modules/sidebar/const';
 import { useAppSelector } from '@src/store/hooks';
 import { Outlet } from 'react-router';
 import styles from './styles.module.scss';
+import { Header, Sidebar } from '@src/modules';
+import { drawerWidth } from '@src/modules/sidebar/const';
 
 const isAuth = true;
 
