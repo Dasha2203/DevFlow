@@ -6,11 +6,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Box, Button, Typography } from '@mui/material';
 import { Credentials } from '@api/types';
 import { useRegister } from '@api/hooks/auth';
-import { FormField, PasswordField } from '@components/index';
-import { setUser } from '@store/slices/user-slice';
+import { FormField, PasswordField } from '@src/shared/components/index';
 import { formSchema } from './registration-schema';
 import { RegisterFormFields } from './types';
 import styles from './styles.module.scss';
+import { setUser } from '@src/shared/store/slices/user-slice';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();

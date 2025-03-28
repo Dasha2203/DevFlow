@@ -8,9 +8,9 @@ import {
   Typography,
 } from '@mui/material';
 import { HeaderProps } from './types';
-import { toggleMenu } from '@src/store/slices/menu-slice';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useAppDispatch, useAppSelector } from '@src/store/hooks';
+import { useAppDispatch, useAppSelector } from '@src/app/store/hooks';
+import { toggleMenu } from '@src/shared/store/slices/menu-slice';
 
 const Header = ({ isAuth }: HeaderProps) => {
   const dispatch = useAppDispatch();

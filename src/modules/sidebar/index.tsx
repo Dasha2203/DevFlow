@@ -7,11 +7,11 @@ import {
 } from '@mui/icons-material';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import { Divider, Drawer, IconButton } from '@mui/material';
-import { useAppDispatch, useAppSelector } from '@store/hooks';
-import { toggleMenu } from '@store/slices/menu-slice';
 import { drawerWidth } from './const';
 import styles from './styles.module.scss';
 import { List } from './components';
+import { useAppDispatch, useAppSelector } from '@src/app/store/hooks';
+import { toggleMenu } from '@src/shared/store/slices/menu-slice';
 
 const mainLinks = [
   {

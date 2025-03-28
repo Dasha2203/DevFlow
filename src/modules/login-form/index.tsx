@@ -5,11 +5,11 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { Box, Button, Typography } from '@mui/material';
 import { useLogin } from '@api/hooks/auth';
 import { Credentials } from '@api/types';
-import { FormField } from '@components/index';
-import { setUser } from '@store/slices/user-slice';
+import { FormField } from '@src/shared/components/index';
 import styles from './styles.module.scss';
 import { LoginFormFields } from './types';
-import PasswordField from '@src/components/password-field';
+import PasswordField from '@src/shared/components/password-field';
+import { setUser } from '@src/shared/store/slices/user-slice';
 
 const LoginForm = () => {
   const navigate = useNavigate();
