@@ -1,3 +1,1 @@
-import StoreProvider from './store-provider';
-
-export { StoreProvider };
+export * from './store-provider';

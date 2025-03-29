@@ -1,5 +1,5 @@
 import { Route } from 'react-router';
-import { Route as RouteType } from '../../shared/routes/types';
+import { Route as RouteType } from '@shared/routes/types';
 
 const handleRoutes = (routes: RouteType[]) => (
   <Route>

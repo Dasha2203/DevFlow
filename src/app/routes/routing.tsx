@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
-import { handleRoutes, ROUTES } from '@src/shared/routes';
+import handleRoutes from './handle-routes';
+import { ROUTES } from './routes';
 
 const Routing = () => {
   return (
