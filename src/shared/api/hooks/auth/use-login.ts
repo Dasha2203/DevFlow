@@ -1,0 +1,34 @@
+import { useCallback, useState } from 'react';
+import { Credentials, User } from '@api/types';
+import { login } from '@api/services/auth';
+
+export const useLogin = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [user, setUser] = useState<User | null>(null);
+
+  const loginUser = useCallback(async (credentials: Credentials) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const userData = await login(credentials);
+      setUser(userData);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Authentication Error');
+      }
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  return {
+    loginUser,
+    user,
+    loading,
+    error,
+  };
+};
