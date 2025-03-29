@@ -4,13 +4,13 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Box, Button, Typography } from '@mui/material';
-import { Credentials } from '@api/types';
 import { useRegister } from '@api/hooks/auth';
-import { FormField, PasswordField } from '@src/shared/components/index';
+import { Credentials } from '@api/types';
+import { setUser } from '@slices/user-slice';
+import { FormField, PasswordField } from '@shared/components';
 import { formSchema } from './registration-schema';
 import { RegisterFormFields } from './types';
 import styles from './styles.module.scss';
-import { setUser } from '@src/shared/store/slices/user-slice';
 
 const RegistrationForm = () => {
   const dispatch = useDispatch();

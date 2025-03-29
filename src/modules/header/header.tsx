@@ -7,12 +7,12 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material';
-import { HeaderProps } from './types';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useAppDispatch, useAppSelector } from '@src/app/store/hooks';
-import { toggleMenu } from '@src/shared/store/slices/menu-slice';
+import { useAppDispatch, useAppSelector } from '@app/store/hooks';
+import { toggleMenu } from '@shared/store/menu';
+import { HeaderProps } from './header.types';
 
-const Header = ({ isAuth }: HeaderProps) => {
+export const Header = ({ isAuth }: HeaderProps) => {
   const dispatch = useAppDispatch();
   const isMenuOpen = useAppSelector((state) => state.menu.isOpen);
 
@@ -62,5 +62,3 @@ const Header = ({ isAuth }: HeaderProps) => {
     </AppBar>
   );
 };
-
-export default Header;

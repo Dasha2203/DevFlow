@@ -10,8 +10,8 @@ import { Divider, Drawer, IconButton } from '@mui/material';
 import { drawerWidth } from './const';
 import styles from './styles.module.scss';
 import { List } from './components';
-import { useAppDispatch, useAppSelector } from '@src/app/store/hooks';
-import { toggleMenu } from '@src/shared/store/slices/menu-slice';
+import { useAppDispatch, useAppSelector } from '@app/store/hooks';
+import { toggleMenu } from '@slices/menu-slice';
 
 const mainLinks = [
   {
@@ -41,7 +41,7 @@ const mainLinks = [
   },
 ];
 
-const Sidebar = () => {
+export const Sidebar = () => {
   const dispatch = useAppDispatch();
   const isMenuOpen = useAppSelector((state) => state.menu.isOpen);
 

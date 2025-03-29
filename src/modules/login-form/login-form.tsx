@@ -5,13 +5,12 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { Box, Button, Typography } from '@mui/material';
 import { useLogin } from '@api/hooks/auth';
 import { Credentials } from '@api/types';
-import { FormField } from '@src/shared/components/index';
+import { setUser } from '@slices/user-slice';
 import styles from './styles.module.scss';
-import { LoginFormFields } from './types';
-import PasswordField from '@src/shared/components/password-field';
-import { setUser } from '@src/shared/store/slices/user-slice';
+import { LoginFormFields } from './login-form.types';
+import { FormField, PasswordField } from '@shared/components';
 
-const LoginForm = () => {
+export const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { error, user, loginUser } = useLogin();
@@ -77,5 +76,3 @@ const LoginForm = () => {
     </Box>
   );
 };
-
-export default LoginForm;

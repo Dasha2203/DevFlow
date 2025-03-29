@@ -6,10 +6,10 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@mui/material';
-import { ListProps } from './types';
+import { ListProps } from './list.types';
 import styles from './styles.module.scss';
 
-const List = ({ items }: ListProps) => {
+export const List = ({ items }: ListProps) => {
   return (
     <MuiList>
       {items.map(({ link, text, icon: Icon }) => (
@@ -31,5 +31,3 @@ const List = ({ items }: ListProps) => {
     </MuiList>
   );
 };
-
-export default List;
