@@ -12,7 +12,7 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
       <TextField
         inputRef={ref}
         variant="outlined"
-        size="small"
+        size="medium"
         defaultValue={defaultValue || searchParams.get('search') || ''}
         onKeyDown={(event) => {
           if (event.key === 'Enter') {
