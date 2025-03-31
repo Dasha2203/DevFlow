@@ -4,6 +4,7 @@ export type Route = {
   path: string;
   element: React.ReactNode;
   children?: Route[];
+  index?: boolean;
 };
 
 export type PATH = {

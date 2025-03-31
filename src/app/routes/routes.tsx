@@ -1,4 +1,4 @@
-import { Login, Register, Users } from '@pages/index';
+import { Login, Register, Users, User } from '@pages/index';
 import { Layout } from '@shared/components';
 import { Route } from '@shared/routes';
 import { PATHS } from '@shared/routes/paths';
@@ -19,6 +19,12 @@ export const ROUTES: Route[] = [
       {
         path: PATHS.users.path,
         element: <Users />,
+        children: [
+          {
+            path: PATHS.users.children?.user.path ?? '',
+            element: <User />,
+          },
+        ],
       },
       {
         path: PATHS.posts.path,

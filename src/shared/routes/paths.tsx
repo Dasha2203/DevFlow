@@ -27,6 +27,12 @@ export const PATHS: Record<string, PATH> = {
     path: '/users',
     text: 'Users',
     icon: GroupIcon,
+    children: {
+      user: {
+        path: ':userid',
+        text: 'User',
+      },
+    },
   },
   login: {
     path: '/login',
