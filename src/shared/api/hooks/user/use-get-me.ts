@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { getMe } from '@api/services';
 import { User } from '@api/types';
 import { useAppDispatch, useAppSelector } from '@app/store/hooks';
-import { setUser as setGlobalUser } from '@slices/index';
+import { setUser as setGlobalUser } from '@slices/user-slice';
 
 export const useGetMe = () => {
   const dispatch = useAppDispatch();
