@@ -1,15 +1,32 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router';
-import { Favorite, ThumbDown } from '@mui/icons-material';
-import { Button, CardActions } from '@mui/material';
-import { useMarkPost } from '@api/hooks';
+import { useNavigate, useParams } from 'react-router';
+import { useDeletePost, useMarkPost } from '@api/hooks';
 import { Mark, MarkEnum } from '@api/types';
+import {
+  Delete as DeleteIcon,
+  Favorite as FavoriteIcon,
+  ThumbDown as ThumbDownIcon,
+} from '@mui/icons-material';
+import { Button, CardActions, IconButton } from '@mui/material';
+import { ConfirmRemoveDialog } from '@shared/components/post-card/components';
 import { PostCardFooterProps } from './post-card-footer.types';
 import styles from './styles.module.scss';
 
-export const PostCardFooter = ({ id, marks, user }: PostCardFooterProps) => {
+export const PostCardFooter = ({
+  id,
+  marks,
+  user,
+  isAuthor,
+}: PostCardFooterProps) => {
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const { postid } = useParams<{ postid: string }>();
   const { setMarkPost, mark, loading } = useMarkPost(marks);
+  const {
+    deletePost,
+    error: deleteError,
+    loading: deleteLoading,
+  } = useDeletePost();
   const [dislikes, setDislikes] = useState(0);
   const [likes, setLikes] = useState(0);
 
@@ -18,12 +35,23 @@ export const PostCardFooter = ({ id, marks, user }: PostCardFooterProps) => {
   }, []);
 
   const handleMark = async (type: MarkEnum) => {
-    console.log('dislike');
     if (!user) {
       navigate('/register');
     }
 
     setMarkPost({ postId: id, mark: type });
+  };
+
+  const handleRemove = async () => {
+    setIsOpen(false);
+    await deletePost(id);
+
+    if (deleteError) return;
+    if (postid) {
+      navigate('/profile/posts');
+    } else {
+      navigate(0);
+    }
   };
 
   useEffect(() => {
@@ -44,21 +72,39 @@ export const PostCardFooter = ({ id, marks, user }: PostCardFooterProps) => {
       <Button
         variant="text"
         color={mark === MarkEnum.Like ? 'error' : 'inherit'}
-        startIcon={<Favorite />}
+        startIcon={<FavoriteIcon />}
         onClick={() => handleMark(MarkEnum.Like)}
         disabled={loading}
+        aria-label="Like this post"
       >
         {likes + (mark === MarkEnum.Like ? 1 : 0)}
       </Button>
       <Button
         variant="text"
         color={mark === MarkEnum.Dislike ? 'warning' : 'inherit'}
-        startIcon={<ThumbDown />}
+        startIcon={<ThumbDownIcon />}
         onClick={() => handleMark(MarkEnum.Dislike)}
         disabled={loading}
+        aria-label="Disliking this post"
       >
         {dislikes + (mark === MarkEnum.Dislike ? 1 : 0)}
       </Button>
+      {isAuthor && (
+        <IconButton
+          aria-label="Remove this post"
+          onClick={() => setIsOpen(true)}
+          disabled={deleteLoading}
+          color="error"
+        >
+          <DeleteIcon />
+        </IconButton>
+      )}
+
+      <ConfirmRemoveDialog
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        onRemove={handleRemove}
+      />
     </CardActions>
   );
 };

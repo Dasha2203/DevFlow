@@ -7,6 +7,7 @@ export type GetPostsParams = {
   sortBy?: string;
   search?: string;
   searchBy?: string;
+  userId?: string;
 };
 
 export type PostsResponse = Response<Pagination<Post>>;

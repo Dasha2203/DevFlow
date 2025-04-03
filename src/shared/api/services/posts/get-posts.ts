@@ -6,6 +6,7 @@ export const getPosts = async ({
   limit,
   sortBy,
   search,
+  userId,
 }: GetPostsParams = {}): Promise<PostsResponse> => {
   try {
     const params = new URLSearchParams();
@@ -13,6 +14,7 @@ export const getPosts = async ({
     const queryParams: Record<string, string | undefined> = {
       page: page ? String(page) : undefined,
       limit: limit ? String(limit) : undefined,
+      userId,
       sortBy,
       search,
     };

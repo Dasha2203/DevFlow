@@ -4,4 +4,5 @@ export type PostCardFooterProps = {
   id: string;
   marks: Mark[];
   user: User | null;
+  isAuthor: boolean;
 };

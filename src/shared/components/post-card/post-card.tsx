@@ -1,8 +1,9 @@
-import { Post } from '@api/types';
-import { useAppSelector } from '@app/store/hooks';
+import { Link } from 'react-router';
 import Editor from '@monaco-editor/react';
 import { Person2 as Person2Icon } from '@mui/icons-material';
 import { Card, CardActionArea, CardContent, Typography } from '@mui/material';
+import { Post } from '@api/types';
+import { useAppSelector } from '@app/store/hooks';
 import { PostCardFooter } from './components/post-card-footer';
 
 export const PostCard = ({ id, code, language, marks, user: author }: Post) => {
@@ -10,7 +11,7 @@ export const PostCard = ({ id, code, language, marks, user: author }: Post) => {
 
   return (
     <Card>
-      <CardActionArea>
+      <CardActionArea component={Link} to={`/posts/${id}`}>
         <Editor
           height="200px"
           defaultLanguage={language}
@@ -27,7 +28,12 @@ export const PostCard = ({ id, code, language, marks, user: author }: Post) => {
           <Typography>{language}</Typography>
         </CardContent>
       </CardActionArea>
-      <PostCardFooter marks={marks} user={user} id={id} />
+      <PostCardFooter
+        marks={marks}
+        user={user}
+        id={id}
+        isAuthor={author.id === user?.id}
+      />
     </Card>
   );
 };
