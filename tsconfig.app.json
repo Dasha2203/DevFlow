@@ -26,10 +26,11 @@
     "paths": {
       "@app/*": ["src/app/*"],
       "@api/*": ["src/shared/api/*"],
+      "@slices/*": ["src/shared/slices/*"],
       "@shared/*": ["src/shared/*"],
       "@components/*": ["src/shared/components/*"],
-      "@slices/*": ["src/shared/slices/*"],
-      "@modules/*": ["src/modules/*"]
+      "@modules/*": ["src/modules/*"],
+      "@pages/*": ["src/pages/*"]
     }
   },
   "include": ["src"]
