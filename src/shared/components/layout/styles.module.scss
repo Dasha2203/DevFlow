@@ -1,5 +1,5 @@
 .main {
-  padding: 0 16px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   min-height: 100svh;
@@ -12,7 +12,7 @@
 }
 
 .container {
-  padding-top: 40px;
+  padding-block: 40px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;

@@ -7,11 +7,10 @@ import {
 } from '@mui/icons-material';
 import TextSnippetIcon from '@mui/icons-material/TextSnippet';
 import { Divider, Drawer, IconButton } from '@mui/material';
-import { drawerWidth } from './const';
-import styles from './styles.module.scss';
 import { List } from './components';
-import { useAppDispatch, useAppSelector } from '@app/store/hooks';
-import { toggleMenu } from '@slices/menu-slice';
+import { drawerWidth } from './const';
+import { SidebarProps } from './sidebar.types';
+import styles from './styles.module.scss';
 
 const mainLinks = [
   {
@@ -41,15 +40,12 @@ const mainLinks = [
   },
 ];
 
-export const Sidebar = () => {
-  const dispatch = useAppDispatch();
-  const isMenuOpen = useAppSelector((state) => state.menu.isOpen);
-
-  const handleToggleSidebar = () => {
-    dispatch(toggleMenu());
-  };
-
+export const Sidebar = ({ isMenuOpen, setIsMenuOpen }: SidebarProps) => {
   const headerLinks = [{ icon: Person2Icon, text: 'Darya', link: '/profile' }];
+
+  const handleCloseSidebar = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <Drawer
@@ -67,7 +63,7 @@ export const Sidebar = () => {
       open={isMenuOpen}
     >
       <div className={styles['sidebar-header']}>
-        <IconButton onClick={handleToggleSidebar}>
+        <IconButton onClick={handleCloseSidebar}>
           <ChevronLeftIcon />
         </IconButton>
       </div>
@@ -79,5 +75,3 @@ export const Sidebar = () => {
     </Drawer>
   );
 };
-
-export default Sidebar;

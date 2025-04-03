@@ -1,21 +1,26 @@
+import { useState } from 'react';
 import { Outlet } from 'react-router';
 import { Box, Container, Toolbar } from '@mui/material';
+import { useGetMe } from '@api/hooks';
+import { Header, Sidebar } from '@shared/components/layout/components';
+import { drawerWidth } from '@shared/components/layout/components/sidebar/const';
 import styles from './styles.module.scss';
-import { useAppSelector } from '@app/store/hooks';
-import { drawerWidth } from '@modules/sidebar/const';
-import { Header } from '@modules/header';
-import Sidebar from '@modules/sidebar/sidebar';
 
 const isAuth = true;
 
 export const Layout = () => {
-  const isMenuOpen = useAppSelector((state) => state.menu.isOpen);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  useGetMe();
 
   return (
     <>
-      <Header isAuth={isAuth} />
+      <Header
+        isAuth={isAuth}
+        isMenuOpen={isMenuOpen}
+        setIsMenuOpen={setIsMenuOpen}
+      />
       <div>
-        <Sidebar />
+        <Sidebar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         <Box
           component="main"
           className={styles['main']}
