@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import { Link, useNavigate, useParams } from 'react-router';
 import { useDeletePost, useMarkPost } from '@api/hooks';
 import { Mark, MarkEnum } from '@api/types';
 import {
   Delete as DeleteIcon,
   Favorite as FavoriteIcon,
   ThumbDown as ThumbDownIcon,
+  Edit as EditIcon,
 } from '@mui/icons-material';
 import { Button, CardActions, IconButton } from '@mui/material';
 import { ConfirmRemoveDialog } from '@shared/components/post-card/components';
@@ -89,6 +90,16 @@ export const PostCardFooter = ({
       >
         {dislikes + (mark === MarkEnum.Dislike ? 1 : 0)}
       </Button>
+      {isAuthor && (
+        <IconButton
+          aria-label="Edit this this post"
+          color="primary"
+          component={Link}
+          to={`/posts/${id}/edit`}
+        >
+          <EditIcon />
+        </IconButton>
+      )}
       {isAuthor && (
         <IconButton
           aria-label="Remove this post"
