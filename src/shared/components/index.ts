@@ -4,3 +4,5 @@ export * from './password-field';
 export * from './no-result';
 export * from './search-field';
 export * from './post-card';
+export * from './select-field';
+export * from './editor-field';
