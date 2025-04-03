@@ -7,3 +7,4 @@ export * from './post-card';
 export * from './select-field';
 export * from './editor-field';
 export * from './comment';
+export * from './question';
