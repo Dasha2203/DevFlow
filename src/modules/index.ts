@@ -6,3 +6,4 @@ export * from './comments-list';
 export * from './create-comment-form';
 export * from './post-form';
 export * from './questions-list';
+export * from './question-form';
