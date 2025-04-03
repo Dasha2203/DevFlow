@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 import { getPosts } from '@api/services';
-import { GetUsersParams, Meta, Post } from '@api/types';
+import { GetPostsParams, Meta, Post } from '@api/types';
 
 const LIMIT = 10;
 const initialMeta: Meta = {
@@ -19,7 +19,7 @@ export const useGetPosts = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [meta, setMeta] = useState<Meta>(initialMeta);
 
-  const fetchPosts = useCallback(async (params: GetUsersParams) => {
+  const fetchPosts = useCallback(async (params: GetPostsParams) => {
     setLoading(true);
     setError(null);
 
