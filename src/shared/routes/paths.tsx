@@ -21,6 +21,14 @@ export const PATHS: Record<string, PATH> = {
       post: {
         path: ':postid',
       },
+      create: {
+        path: 'new',
+        text: 'Create post',
+      },
+      edit: {
+        path: ':postid/edit',
+        text: 'Edit post',
+      },
     },
   },
   users: {
@@ -47,8 +55,8 @@ export const PATHS: Record<string, PATH> = {
     text: 'Profile',
     icon: Person2Icon,
     children: {
-      snippets: {
-        path: '/snippets',
+      posts: {
+        path: 'posts',
         icon: TextSnippetIcon,
       },
     },

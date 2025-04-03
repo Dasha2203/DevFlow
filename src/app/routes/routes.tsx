@@ -1,5 +1,9 @@
+import { CreatePost } from '@pages/create-post';
+import { EditPost } from '@pages/edit-post';
 import { Home } from '@pages/home';
 import { Login, Register, Users, User } from '@pages/index';
+import { MyPosts } from '@pages/my-posts/my-posts';
+import { Post } from '@pages/post';
 import { Layout } from '@shared/components';
 import { Route } from '@shared/routes';
 import { PATHS } from '@shared/routes/paths';
@@ -32,12 +36,30 @@ export const ROUTES: Route[] = [
         ],
       },
       {
+        path: PATHS.profile.path,
+        element: <>profile</>,
+        children: [
+          {
+            path: PATHS.profile.children?.posts.path ?? '',
+            element: <MyPosts />,
+          },
+        ],
+      },
+      {
         path: PATHS.posts.path,
         element: <div>Posts</div>,
         children: [
           {
             path: PATHS.posts.children?.post.path ?? '',
-            element: <div>post by id</div>,
+            element: <Post />,
+          },
+          {
+            path: PATHS.posts.children?.create.path ?? '',
+            element: <CreatePost />,
+          },
+          {
+            path: PATHS.posts.children?.edit.path ?? '',
+            element: <EditPost />,
           },
         ],
       },
