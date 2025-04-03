@@ -6,3 +6,4 @@ export * from './search-field';
 export * from './post-card';
 export * from './select-field';
 export * from './editor-field';
+export * from './comment';

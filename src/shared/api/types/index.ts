@@ -4,3 +4,4 @@ export * from './response.types';
 export * from './user.types';
 export * from './pagination';
 export * from './posts';
+export * from './comment';
