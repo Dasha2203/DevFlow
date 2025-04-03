@@ -5,3 +5,4 @@ export * from './user.types';
 export * from './pagination';
 export * from './posts';
 export * from './comment';
+export * from './question';
