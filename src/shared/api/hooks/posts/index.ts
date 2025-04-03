@@ -6,3 +6,4 @@ export * from './use-edit-post';
 export * from './use-create-post';
 export * from './use-edit-post';
 export * from './use-delete-post';
+export * from './use-get-post';
