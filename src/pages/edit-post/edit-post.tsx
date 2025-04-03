@@ -13,7 +13,7 @@ export const EditPost = () => {
     if (!postid) return;
 
     getPost(postid);
-  }, [postid]);
+  }, [postid, getPost]);
 
   return (
     <>
