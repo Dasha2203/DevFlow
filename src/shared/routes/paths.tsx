@@ -36,16 +36,16 @@ export const PATHS: Record<string, PATH> = {
     text: 'Questions',
     icon: ContactSupportIcon,
     children: {
-      post: {
+      question: {
         path: ':questionId',
       },
       create: {
         path: 'new',
-        text: 'Create post',
+        text: 'Create question',
       },
       edit: {
         path: ':questionId/edit',
-        text: 'Edit post',
+        text: 'Edit question',
       },
     },
   },

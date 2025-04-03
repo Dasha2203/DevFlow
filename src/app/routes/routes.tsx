@@ -1,9 +1,12 @@
 import { CreatePost } from '@pages/create-post';
+import { CreateQuestion } from '@pages/create-question';
 import { EditPost } from '@pages/edit-post';
+import { EditQuestion } from '@pages/edit-question';
 import { Home } from '@pages/home';
 import { Login, Register, Users, User } from '@pages/index';
 import { MyPosts } from '@pages/my-posts/my-posts';
 import { Post } from '@pages/post';
+import { QuestionPage } from '@pages/question';
 import { Questions } from '@pages/questions';
 import { Layout } from '@shared/components';
 import { Route } from '@shared/routes';
@@ -67,20 +70,20 @@ export const ROUTES: Route[] = [
       {
         path: PATHS.questions.path,
         element: <Questions />,
-        // children: [
-        //   {
-        //     path: PATHS.questions.children?.question.path ?? '',
-        //     element: <Post />,
-        //   },
-        //   {
-        //     path: PATHS.posts.children?.create.path ?? '',
-        //     element: <CreatePost />,
-        //   },
-        //   {
-        //     path: PATHS.posts.children?.edit.path ?? '',
-        //     element: <EditPost />,
-        //   },
-        // ],
+        children: [
+          {
+            path: PATHS.questions.children?.question.path ?? '',
+            element: <QuestionPage />,
+          },
+          {
+            path: PATHS.questions.children?.create.path ?? '',
+            element: <CreateQuestion />,
+          },
+          {
+            path: PATHS.questions.children?.edit.path ?? '',
+            element: <EditQuestion />,
+          },
+        ],
       },
     ],
   },

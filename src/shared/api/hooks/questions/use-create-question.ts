@@ -26,7 +26,7 @@ export const useCreateQuestion = () => {
   }, []);
 
   return {
-    createQuestions: addQuestion,
+    createQuestion: addQuestion,
     question,
     loading,
     error,
