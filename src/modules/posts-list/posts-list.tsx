@@ -1,23 +1,23 @@
 import { useEffect, useMemo } from 'react';
+import { useGetPosts } from '@api/hooks';
 import { Box, CircularProgress, Grid, Pagination } from '@mui/material';
 import { NoResult, PostCard } from '@shared/components';
 import { useUpdateSearchParams } from '@shared/hooks';
-import { useGetMe, useGetPosts } from '@api/hooks';
 import styles from './styles.module.scss';
 
-export const PostsList = () => {
+export const PostsList = ({ userId }: { userId?: string }) => {
   const { posts, getPosts, meta, loading } = useGetPosts();
   const { searchParams, updateSearchParams } = useUpdateSearchParams();
-  useGetMe();
 
   const parsedParams = useMemo(
     () => ({
       page: Number(searchParams.get('page')) || 1,
-      limit: Number(searchParams.get('limit')) || 10,
+      limit: Number(searchParams.get('limit')) || 9,
       search: searchParams.get('search') || undefined,
       sortBy: searchParams.get('sortBy') || undefined,
+      userId,
     }),
-    [searchParams]
+    [searchParams, userId]
   );
 
   const handleChangePage = (_: unknown, page: number) => {
