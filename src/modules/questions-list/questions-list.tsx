@@ -1,4 +1,5 @@
 import { useEffect, useMemo } from 'react';
+import { Link } from 'react-router';
 import { Box, CircularProgress, Pagination, Stack } from '@mui/material';
 import { useGetQuestions } from '@api/hooks';
 import { NoResult, Question } from '@shared/components';
@@ -33,10 +34,12 @@ export const QuestionsList = ({ userId }: { userId?: string }) => {
   if (!questions.length) return <NoResult className={styles['no-result']} />;
 
   return (
-    <Box className={styles['posts-list']}>
+    <Box className={styles['list']}>
       <Stack spacing={4}>
         {questions.map((question) => (
-          <Question key={question.id} {...question} />
+          <Link key={question.id} to={`/questions/${question.id}`}>
+            <Question {...question} />
+          </Link>
         ))}
       </Stack>
       <Pagination
@@ -45,7 +48,7 @@ export const QuestionsList = ({ userId }: { userId?: string }) => {
         onChange={handleChangePage}
         variant="outlined"
         color="primary"
-        className={styles['posts-list__pagination']}
+        className={styles['list__pagination']}
       />
     </Box>
   );
