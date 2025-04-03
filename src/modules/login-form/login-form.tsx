@@ -3,12 +3,12 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { Box, Button, Typography } from '@mui/material';
-import { useLogin } from '@api/hooks/auth';
 import { Credentials } from '@api/types';
 import { setUser } from '@slices/user-slice';
-import styles from './styles.module.scss';
+import { FormField, PasswordField } from '@components/index';
+import { useLogin } from '@api/hooks';
 import { LoginFormFields } from './login-form.types';
-import { FormField, PasswordField } from '@shared/components';
+import styles from './styles.module.scss';
 
 export const LoginForm = () => {
   const navigate = useNavigate();

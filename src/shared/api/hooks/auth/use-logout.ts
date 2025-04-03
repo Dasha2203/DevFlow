@@ -1,5 +1,5 @@
+import { logout } from '@api/services';
 import { useCallback, useState } from 'react';
-import { logout } from '@src/shared/api/services/auth';
 
 const useLogout = () => {
   const [loading, setLoading] = useState<boolean>(false);
