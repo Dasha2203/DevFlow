@@ -10,6 +10,7 @@ export const FormField = <T extends FieldValues>({
   error,
   helperText,
   onChange,
+  ...props
 }: FormFieldProps<T>) => (
   <Controller
     name={name}
@@ -32,6 +33,7 @@ export const FormField = <T extends FieldValues>({
 
           field.onChange(value);
         }}
+        {...props}
       />
     )}
   />
