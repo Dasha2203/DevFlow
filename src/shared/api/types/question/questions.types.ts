@@ -9,4 +9,4 @@ export type GetQuestionsParams = {
   userId?: string;
 };
 
-export type PostsResponse = Response<Pagination<Question>>;
+export type QuestionsResponse = Response<Pagination<Question>>;

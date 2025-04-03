@@ -1,6 +1,5 @@
 import { api } from '@api/api';
-import { PostsResponse } from '@api/types/posts';
-import { GetQuestionsParams } from '@api/types/question/questions.types';
+import { GetQuestionsParams, QuestionsResponse } from '@api/types';
 
 export const getQuestions = async ({
   page,
@@ -8,7 +7,7 @@ export const getQuestions = async ({
   sortBy,
   search,
   userId,
-}: GetQuestionsParams = {}): Promise<PostsResponse> => {
+}: GetQuestionsParams = {}): Promise<QuestionsResponse> => {
   try {
     const params = new URLSearchParams();
 
@@ -26,7 +25,7 @@ export const getQuestions = async ({
       }
     });
 
-    const { data } = await api.get<PostsResponse>('/questions', {
+    const { data } = await api.get<QuestionsResponse>('/questions', {
       params,
     });
 
