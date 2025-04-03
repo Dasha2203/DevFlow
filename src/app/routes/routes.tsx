@@ -4,6 +4,7 @@ import { Home } from '@pages/home';
 import { Login, Register, Users, User } from '@pages/index';
 import { MyPosts } from '@pages/my-posts/my-posts';
 import { Post } from '@pages/post';
+import { Questions } from '@pages/questions';
 import { Layout } from '@shared/components';
 import { Route } from '@shared/routes';
 import { PATHS } from '@shared/routes/paths';
@@ -62,6 +63,24 @@ export const ROUTES: Route[] = [
             element: <EditPost />,
           },
         ],
+      },
+      {
+        path: PATHS.questions.path,
+        element: <Questions />,
+        // children: [
+        //   {
+        //     path: PATHS.questions.children?.question.path ?? '',
+        //     element: <Post />,
+        //   },
+        //   {
+        //     path: PATHS.posts.children?.create.path ?? '',
+        //     element: <CreatePost />,
+        //   },
+        //   {
+        //     path: PATHS.posts.children?.edit.path ?? '',
+        //     element: <EditPost />,
+        //   },
+        // ],
       },
     ],
   },

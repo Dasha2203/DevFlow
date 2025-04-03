@@ -31,6 +31,24 @@ export const PATHS: Record<string, PATH> = {
       },
     },
   },
+  questions: {
+    path: 'questions',
+    text: 'Questions',
+    icon: ContactSupportIcon,
+    children: {
+      post: {
+        path: ':questionId',
+      },
+      create: {
+        path: 'new',
+        text: 'Create post',
+      },
+      edit: {
+        path: ':questionId/edit',
+        text: 'Edit post',
+      },
+    },
+  },
   users: {
     path: '/users',
     text: 'Users',
@@ -60,9 +78,5 @@ export const PATHS: Record<string, PATH> = {
         icon: TextSnippetIcon,
       },
     },
-  },
-  questions: {
-    path: '/questions',
-    icon: ContactSupportIcon,
   },
 };
