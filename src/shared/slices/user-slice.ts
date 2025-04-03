@@ -1,12 +1,14 @@
-import { User } from '@api/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { User } from '@api/types';
 
 interface UserState {
   user: User | null;
+  loading: boolean;
 }
 
 const initialState: UserState = {
   user: null,
+  loading: false,
 };
 
 const userSlice = createSlice({
@@ -19,8 +21,11 @@ const userSlice = createSlice({
     logout: (state) => {
       state.user = null;
     },
+    setLoadingUser: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+    },
   },
 });
 
-export const { setUser, logout } = userSlice.actions;
+export const { setUser, logout, setLoadingUser } = userSlice.actions;
 export default userSlice.reducer;

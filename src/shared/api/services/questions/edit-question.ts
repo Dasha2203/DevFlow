@@ -2,7 +2,7 @@ import { api } from '@api/api';
 import { Question, QuestionCredentials, Response } from '@api/types';
 
 export const editQuestion = async (
-  id: string,
+  id: number,
   params: QuestionCredentials
 ): Promise<void> => {
   try {

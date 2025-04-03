@@ -2,11 +2,11 @@ import { useCallback, useEffect, useState } from 'react';
 import { getMe } from '@api/services';
 import { User } from '@api/types';
 import { useAppDispatch, useAppSelector } from '@app/store/hooks';
-import { setUser as setGlobalUser } from '@slices/user-slice';
+import { setUser as setGlobalUser, setLoadingUser } from '@slices/user-slice';
 
 export const useGetMe = () => {
   const dispatch = useAppDispatch();
-  const data = useAppSelector((state) => state.user);
+  const { user: globalUser } = useAppSelector((state) => state.user);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const [user, setUser] = useState<User | null>(null);
@@ -14,6 +14,7 @@ export const useGetMe = () => {
   const getUser = useCallback(async () => {
     setLoading(true);
     setError(null);
+    dispatch(setLoadingUser(true));
 
     try {
       const userData = await getMe();
@@ -27,17 +28,18 @@ export const useGetMe = () => {
       }
     } finally {
       setLoading(false);
+      dispatch(setLoadingUser(false));
     }
   }, []);
 
   useEffect(() => {
-    if (data.user) {
-      setUser(data.user);
+    if (globalUser) {
+      setUser(globalUser);
       return;
     }
 
     getUser();
-  }, [data, setUser, getUser]);
+  }, [globalUser, setUser, getUser]);
 
   return {
     getMe: getUser,
