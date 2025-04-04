@@ -1,9 +1,8 @@
-import { useEffect, useMemo } from 'react';
-import { Link } from 'react-router';
-import { Box, CircularProgress, Pagination, Stack } from '@mui/material';
 import { useGetQuestions } from '@api/hooks';
+import { Box, CircularProgress, Pagination, Stack } from '@mui/material';
 import { NoResult, Question } from '@shared/components';
 import { useUpdateSearchParams } from '@shared/hooks';
+import { useEffect, useMemo } from 'react';
 import styles from './styles.module.scss';
 
 export const QuestionsList = ({ userId }: { userId?: string }) => {
@@ -37,9 +36,11 @@ export const QuestionsList = ({ userId }: { userId?: string }) => {
     <Box className={styles['list']}>
       <Stack spacing={4}>
         {questions.map((question) => (
-          <Link key={question.id} to={`/questions/${question.id}`}>
-            <Question {...question} />
-          </Link>
+          <Question
+            key={question.id}
+            link={`/questions/${question.id}`}
+            {...question}
+          />
         ))}
       </Stack>
       <Pagination

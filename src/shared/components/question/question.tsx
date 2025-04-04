@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, useParams } from 'react-router';
+import { Link, useNavigate, useParams } from 'react-router';
 import {
   Box,
   Card,
@@ -24,6 +24,7 @@ export const Question = ({
   isResolved,
   attachedCode,
   user,
+  link,
 }: QuestionProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
@@ -49,7 +50,16 @@ export const Question = ({
   };
 
   return (
-    <Card className={styles['question']} onClick={(e) => e.stopPropagation()}>
+    <Card
+      component={link ? Link : 'div'}
+      className={styles['question']}
+      {...(link
+        ? { to: link }
+        : {
+            onClick: (e: React.MouseEvent<HTMLDivElement>) =>
+              e.stopPropagation(),
+          })}
+    >
       <CardContent>
         <Box display="flex" justifyContent="space-between" alignItems="center">
           <Typography variant="h6" fontWeight="bold">

@@ -1,3 +1,5 @@
 import { Question } from '@api/types';
 
-export type QuestionProps = Question;
+export type QuestionProps = Question & {
+  link?: string;
+};
