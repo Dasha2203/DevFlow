@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { Box } from '@mui/material';
-import { Comment, NoResult } from '@shared/components';
+import { Comment, NoResult } from '@components';
 import { useDeleteComment, useEditComment } from '@api/hooks';
 import { CommentsListProps } from './comments-list.types';
 import styles from './styles.module.scss';

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import clsx from 'clsx';
 import { Box, Button } from '@mui/material';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { EditorField, FormField } from '@shared/components';
+import { EditorField, FormField } from '@components';
 import { useCreateQuestion, useEditQuestion } from '@api/hooks';
 import { FormData, QuestionFormProps } from './question-form.types';
 import { questionFormSchema } from './question-form-schema';

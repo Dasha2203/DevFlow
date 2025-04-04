@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { useCreateComment } from '@api/hooks';
 import { Box, Button, Stack } from '@mui/material';
-import { FormField } from '@shared/components';
+import { FormField } from '@components';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useAppSelector } from '@app/store/hooks';
 import { PATHS } from '@shared/routes';

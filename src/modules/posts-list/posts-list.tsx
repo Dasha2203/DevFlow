@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { useGetPosts } from '@api/hooks';
 import { Box, CircularProgress, Grid, Pagination } from '@mui/material';
-import { NoResult, PostCard } from '@shared/components';
+import { NoResult, PostCard } from '@components';
 import { useUpdateSearchParams } from '@shared/hooks';
 import styles from './styles.module.scss';
 

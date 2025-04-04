@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import { useCreatePost, useEditPost, useGetLanguages } from '@api/hooks';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, CircularProgress, Stack } from '@mui/material';
-import { EditorField, SelectField } from '@shared/components';
+import { EditorField, SelectField } from '@components';
 import { ErrorText } from '@shared/ui';
 import { postFormSchema } from './post-form-schema';
 import { FormData, PostFormProps } from './post-form.types';

@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Box, Button, Typography } from '@mui/material';
 import { Credentials } from '@api/types';
 import { setUser } from '@slices/user-slice';
-import { FormField, PasswordField } from '@shared/components';
+import { FormField, PasswordField } from '@components';
 import { formSchema } from './registration-schema';
 import { RegisterFormFields } from './types';
 import styles from './styles.module.scss';

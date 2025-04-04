@@ -14,7 +14,7 @@ import { Link, useParams } from 'react-router';
 import styles from './styles.module.scss';
 import { Statistics } from './components/statistic';
 import { UserInfoProps } from './user-info.types';
-import { NoResult } from '@shared/components';
+import { NoResult } from '@components';
 import clsx from 'clsx';
 
 export const UserInfo = ({ id, className, style }: UserInfoProps) => {

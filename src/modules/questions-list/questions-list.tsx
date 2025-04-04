@@ -1,6 +1,6 @@
 import { useGetQuestions } from '@api/hooks';
 import { Box, CircularProgress, Pagination, Stack } from '@mui/material';
-import { NoResult, Question } from '@shared/components';
+import { NoResult, Question } from '@components';
 import { useUpdateSearchParams } from '@shared/hooks';
 import { useEffect, useMemo } from 'react';
 import styles from './styles.module.scss';

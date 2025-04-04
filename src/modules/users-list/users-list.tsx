@@ -9,7 +9,7 @@ import {
   TablePagination,
 } from '@mui/material';
 import { useGetUsers } from '@api/hooks';
-import { NoResult } from '@shared/components';
+import { NoResult } from '@components';
 import { Row, UsersTableHead } from './components';
 import styles from './styles.module.scss';
 

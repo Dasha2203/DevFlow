@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { Box, Button, Typography } from '@mui/material';
 import { Credentials } from '@api/types';
 import { setUser } from '@slices/user-slice';
-import { FormField, PasswordField } from '@components/index';
+import { FormField, PasswordField } from '@components';
 import { useLogin } from '@api/hooks';
 import { LoginFormFields } from './login-form.types';
 import styles from './styles.module.scss';
