@@ -9,6 +9,8 @@ import { FormField, PasswordField } from '@components/index';
 import { useLogin } from '@api/hooks';
 import { LoginFormFields } from './login-form.types';
 import styles from './styles.module.scss';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { formSchema } from './login-form-schema';
 
 export const LoginForm = () => {
   const navigate = useNavigate();
@@ -23,6 +25,7 @@ export const LoginForm = () => {
       username: '',
       password: '',
     },
+    resolver: zodResolver(formSchema),
   });
 
   useEffect(() => {
