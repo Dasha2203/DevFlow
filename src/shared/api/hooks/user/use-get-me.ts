@@ -4,10 +4,10 @@ import { User } from '@api/types';
 import { useAppDispatch, useAppSelector } from '@app/store/hooks';
 import { setUser as setGlobalUser, setLoadingUser } from '@slices/user-slice';
 
-export const useGetMe = () => {
+export const useGetMe = (initialLoading?: boolean) => {
   const dispatch = useAppDispatch();
   const { user: globalUser } = useAppSelector((state) => state.user);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(initialLoading || false);
   const [error, setError] = useState<string | null>(null);
   const [user, setUser] = useState<User | null>(null);
 

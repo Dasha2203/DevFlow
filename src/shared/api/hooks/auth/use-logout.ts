@@ -1,7 +1,10 @@
-import { logout } from '@api/services';
 import { useCallback, useState } from 'react';
+import { logout } from '@api/services';
+import { useAppDispatch } from '@app/store/hooks';
+import { logout as clearUser } from '@slices/user-slice';
 
 const useLogout = () => {
+  const dispatch = useAppDispatch();
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -11,6 +14,7 @@ const useLogout = () => {
 
     try {
       await logout();
+      dispatch(clearUser());
     } catch (err) {
       setError('Something went wrong');
       console.log(err);
