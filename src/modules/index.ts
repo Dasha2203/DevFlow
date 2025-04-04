@@ -1,7 +1,5 @@
-export * from '../shared/components/layout/components/header';
 export * from './login-form';
 export * from './registration-form';
-export * from '../shared/components/layout/components/sidebar';
 export * from './comments-list';
 export * from './create-comment-form';
 export * from './post-form';
