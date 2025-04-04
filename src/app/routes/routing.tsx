@@ -7,7 +7,8 @@ import { ROUTES } from './routes';
 const Routing = () => {
   const { loading } = useGetMe(true);
 
-  if (loading) return <CircularProgress sx={{ mx: 'auto', mt: 40 }} />;
+  if (loading)
+    return <CircularProgress sx={{ display: 'block', mx: 'auto', mt: 40 }} />;
 
   return (
     <BrowserRouter>

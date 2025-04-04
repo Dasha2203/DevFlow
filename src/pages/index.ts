@@ -6,3 +6,5 @@ export * from './create-question';
 export * from './edit-question';
 export * from './question';
 export * from './questions';
+export * from './profile';
+export * from './my-questions';

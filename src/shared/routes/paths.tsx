@@ -77,6 +77,10 @@ export const PATHS: Record<string, PATH> = {
         path: 'posts',
         icon: TextSnippetIcon,
       },
+      questions: {
+        path: 'questions',
+        icon: TextSnippetIcon,
+      },
     },
   },
 };

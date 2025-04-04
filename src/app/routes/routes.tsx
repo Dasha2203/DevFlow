@@ -1,7 +1,14 @@
 import { CreateQuestion } from '@pages/create-question';
 import { EditQuestion } from '@pages/edit-question';
 import { Home } from '@pages/home';
-import { Login, Register, Users, User, Profile } from '@pages/index';
+import {
+  Login,
+  Register,
+  Users,
+  User,
+  Profile,
+  MyQuestions,
+} from '@pages/index';
 import { MyPosts } from '@pages/my-posts/my-posts';
 import { Post } from '@pages/post';
 import { QuestionPage } from '@pages/question';
@@ -65,11 +72,18 @@ export const ROUTES: Route[] = [
         children: [
           {
             path: PATHS.profile.path,
-            element: <Profile />,
             children: [
+              {
+                index: true,
+                element: <Profile />,
+              },
               {
                 path: PATHS.profile.children?.posts.path,
                 element: <MyPosts />,
+              },
+              {
+                path: PATHS.profile.children?.questions.path,
+                element: <MyQuestions />,
               },
             ],
           },
