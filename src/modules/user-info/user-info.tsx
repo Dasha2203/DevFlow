@@ -10,25 +10,35 @@ import {
   Typography,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { Link, useParams } from 'react-router';
 import styles from './styles.module.scss';
 import { Statistics } from './components/statistic';
+import { UserInfoProps } from './user-info.types';
+import { NoResult } from '@shared/components';
+import clsx from 'clsx';
 
-export const UserInfo = () => {
+export const UserInfo = ({ id, className, style }: UserInfoProps) => {
   const { userid } = useParams<{ userid: string }>();
   const [expanded, setExpanded] = useState(false);
   const { user, statistic, loading, getUserStatistic } = useGetUserStatistic();
 
   useEffect(() => {
-    if (!userid) return;
+    const idParam = id || userid;
 
-    getUserStatistic(userid);
-  }, [userid, getUserStatistic]);
+    if (!idParam) return;
+
+    getUserStatistic(idParam);
+  }, [userid, getUserStatistic, id]);
 
   if (loading) return <CircularProgress className={styles['loader']} />;
 
+  if (!user) return <NoResult />;
+
   return (
-    <Box className={styles['user-info__container']}>
+    <Box
+      className={clsx(styles['user-info__container'], className)}
+      style={style}
+    >
       <Box className={styles['user-info__header']}>
         <Avatar sx={{ bgcolor: 'primary.main', width: 80, height: 80 }}>
           <PersonIcon sx={{ fontSize: 40 }} />
@@ -41,13 +51,31 @@ export const UserInfo = () => {
         </Box>
         <Chip label={user?.role} color="primary" size="small" />
       </Box>
-      <Button
-        variant="outlined"
-        color={'primary'}
-        onClick={() => setExpanded((prev) => !prev)}
-      >
-        {expanded ? 'Hide Statistics' : 'Show Statistics'}
-      </Button>
+      <Box sx={{ display: 'flex', gap: 4 }}>
+        <Button
+          variant="outlined"
+          color={'primary'}
+          onClick={() => setExpanded((prev) => !prev)}
+        >
+          {expanded ? 'Hide Statistics' : 'Show Statistics'}
+        </Button>
+        <Button
+          variant="text"
+          color={'primary'}
+          component={Link}
+          to="/profile/posts"
+        >
+          My posts
+        </Button>
+        <Button
+          variant="text"
+          color={'primary'}
+          component={Link}
+          to="/profile/questions"
+        >
+          My questions
+        </Button>
+      </Box>
       {expanded && statistic && <Statistics {...statistic} />}
     </Box>
   );
