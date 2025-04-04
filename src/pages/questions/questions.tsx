@@ -1,4 +1,4 @@
-import { QuestionsList } from '@modules/questions-list';
+import { QuestionsList } from '@modules';
 import { SearchField } from '@shared/components';
 import { PageTitle } from '@shared/ui';
 

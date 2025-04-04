@@ -7,3 +7,6 @@ export * from './create-comment-form';
 export * from './post-form';
 export * from './questions-list';
 export * from './question-form';
+export * from './user-info';
+export * from './posts-list';
+export * from './users-list';

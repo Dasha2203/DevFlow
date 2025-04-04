@@ -1,4 +1,4 @@
-import { PostForm } from '@modules/post-form';
+import { PostForm } from '@modules';
 import { PageTitle } from '@shared/ui';
 import styles from './styles.module.scss';
 

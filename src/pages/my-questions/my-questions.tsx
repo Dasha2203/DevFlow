@@ -1,5 +1,5 @@
 import { useGetMe } from '@api/hooks';
-import { QuestionsList } from '@modules/questions-list';
+import { QuestionsList } from '@modules';
 import { PageTitle } from '@shared/ui';
 
 export const MyQuestions = () => {

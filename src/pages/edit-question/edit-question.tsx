@@ -4,7 +4,7 @@ import { CircularProgress } from '@mui/material';
 import { useGetQuestion } from '@api/hooks';
 import { isNumber } from '@shared/utils';
 import { ErrorText, PageTitle } from '@shared/ui';
-import { QuestionForm } from '@modules/question-form';
+import { QuestionForm } from '@modules';
 import { useAppSelector } from '@app/store/hooks';
 import styles from './styles.module.scss';
 
@@ -24,9 +24,9 @@ export const EditQuestion = () => {
   }, [questionId, getQuestion, navigate]);
 
   useEffect(() => {
-    // if (!user || (question && question.user.id !== user.id)) {
-    //   navigate(`/questions/${questionId}`);
-    // }
+    if (!user || (question && question.user.id !== user.id)) {
+      navigate(`/questions/${questionId}`);
+    }
   }, [user, navigate, question, questionId]);
 
   if (loading || loadingUser)

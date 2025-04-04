@@ -29,7 +29,7 @@
       "@slices/*": ["src/shared/slices/*"],
       "@shared/*": ["src/shared/*"],
       "@components/*": ["src/shared/components/*"],
-      "@modules/*": ["src/modules/*"],
+      "@modules": ["src/modules"],
       "@pages/*": ["src/pages/*"]
     }
   },

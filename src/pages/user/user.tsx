@@ -1,4 +1,4 @@
-import { UserInfo } from '@modules/user-info';
+import { UserInfo } from '@modules';
 
 export const User = () => {
   return (

@@ -1,4 +1,4 @@
-import { UsersList } from '@modules/users-list';
+import { UsersList } from '@modules';
 import { SearchField } from '@shared/components';
 import { PageTitle } from '@shared/ui';
 

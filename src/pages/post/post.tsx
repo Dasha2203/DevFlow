@@ -1,8 +1,7 @@
 import { useParams } from 'react-router';
 import { Chip, CircularProgress, Typography } from '@mui/material';
 import { useSubscribePost } from '@api/hooks';
-import { CommentsList } from '@modules/comments-list';
-import { CreateCommentForm } from '@modules/create-comment-form';
+import { CommentsList, CreateCommentForm } from '@modules';
 import { PostCard } from '@shared/components';
 import styles from './styles.module.scss';
 

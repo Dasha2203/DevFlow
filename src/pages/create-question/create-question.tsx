@@ -1,5 +1,5 @@
 import { useAppSelector } from '@app/store/hooks';
-import { QuestionForm } from '@modules/question-form';
+import { QuestionForm } from '@modules';
 import { CircularProgress } from '@mui/material';
 import { PageTitle } from '@shared/ui';
 import styles from './styles.module.scss';

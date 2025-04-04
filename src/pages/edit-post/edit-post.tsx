@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
-import { PostForm } from '@modules/post-form';
+import { PostForm } from '@modules';
 import { useGetPost } from '@api/hooks';
 import { PageTitle } from '@shared/ui';
 import styles from './styles.module.scss';

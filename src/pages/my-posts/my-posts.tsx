@@ -1,5 +1,5 @@
 import { useGetMe } from '@api/hooks';
-import { PostsList } from '@modules/posts-list';
+import { PostsList } from '@modules';
 import { PageTitle } from '@shared/ui';
 
 export const MyPosts = () => {

@@ -1,5 +1,5 @@
 import { useAppSelector } from '@app/store/hooks';
-import { UserInfo } from '@modules/user-info';
+import { UserInfo } from '@modules';
 import { PageTitle } from '@shared/ui';
 import styles from './styles.module.scss';
 
