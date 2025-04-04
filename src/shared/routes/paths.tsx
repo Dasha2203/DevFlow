@@ -14,7 +14,7 @@ export const PATHS: Record<string, PATH> = {
     icon: HomeIcon,
   },
   posts: {
-    path: '/posts',
+    path: 'posts',
     text: 'Post snippet',
     icon: TextSnippetIcon,
     children: {
@@ -50,7 +50,7 @@ export const PATHS: Record<string, PATH> = {
     },
   },
   users: {
-    path: '/users',
+    path: 'users',
     text: 'Users',
     icon: GroupIcon,
     children: {
@@ -61,15 +61,15 @@ export const PATHS: Record<string, PATH> = {
     },
   },
   login: {
-    path: '/login',
+    path: 'login',
     text: 'Sign in',
   },
   register: {
-    path: '/register',
+    path: 'register',
     text: 'Sign up',
   },
   profile: {
-    path: '/profile',
+    path: 'profile',
     text: 'Profile',
     icon: Person2Icon,
     children: {

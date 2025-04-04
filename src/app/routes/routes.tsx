@@ -1,9 +1,7 @@
-import { CreatePost } from '@pages/create-post';
 import { CreateQuestion } from '@pages/create-question';
-import { EditPost } from '@pages/edit-post';
 import { EditQuestion } from '@pages/edit-question';
 import { Home } from '@pages/home';
-import { Login, Register, Users, User } from '@pages/index';
+import { Login, Register, Users, User, Profile } from '@pages/index';
 import { MyPosts } from '@pages/my-posts/my-posts';
 import { Post } from '@pages/post';
 import { QuestionPage } from '@pages/question';
@@ -11,79 +9,101 @@ import { Questions } from '@pages/questions';
 import { Layout } from '@shared/components';
 import { Route } from '@shared/routes';
 import { PATHS } from '@shared/routes/paths';
+import { ProtectedRoutes } from './protected-route';
+import { ProtectedQuestRoute } from './protected-quest-route';
 
 export const ROUTES: Route[] = [
   {
-    path: PATHS.home.path,
+    path: '/',
     element: <Layout />,
     children: [
       {
-        path: PATHS.home.path,
+        index: true,
         element: <Home />,
       },
       {
-        path: PATHS.register.path,
-        element: <Register />,
-      },
-      {
-        path: PATHS.login.path,
-        element: <Login />,
-      },
-      {
-        path: PATHS.users.path,
-        element: <Users />,
+        element: <ProtectedQuestRoute />,
         children: [
           {
-            path: PATHS.users.children?.user.path ?? '',
-            element: <User />,
-          },
-        ],
-      },
-      {
-        path: PATHS.profile.path,
-        element: <>profile</>,
-        children: [
-          {
-            path: PATHS.profile.children?.posts.path ?? '',
-            element: <MyPosts />,
-          },
-        ],
-      },
-      {
-        path: PATHS.posts.path,
-        element: <div>Posts</div>,
-        children: [
-          {
-            path: PATHS.posts.children?.post.path ?? '',
-            element: <Post />,
+            path: PATHS.login.path,
+            element: <Login />,
           },
           {
-            path: PATHS.posts.children?.create.path ?? '',
-            element: <CreatePost />,
-          },
-          {
-            path: PATHS.posts.children?.edit.path ?? '',
-            element: <EditPost />,
+            path: PATHS.register.path,
+            element: <Register />,
           },
         ],
       },
       {
         path: PATHS.questions.path,
-        element: <Questions />,
         children: [
           {
-            path: PATHS.questions.children?.question.path ?? '',
+            index: true,
+            element: <Questions />,
+          },
+          {
+            path: PATHS.questions.children?.question.path,
             element: <QuestionPage />,
           },
           {
-            path: PATHS.questions.children?.create.path ?? '',
-            element: <CreateQuestion />,
-          },
-          {
-            path: PATHS.questions.children?.edit.path ?? '',
-            element: <EditQuestion />,
+            element: <ProtectedRoutes />,
+            children: [
+              {
+                path: PATHS.questions.children?.create.path,
+                element: <CreateQuestion />,
+              },
+              {
+                path: PATHS.questions.children?.edit.path,
+                element: <EditQuestion />,
+              },
+            ],
           },
         ],
+      },
+      {
+        element: <ProtectedRoutes />,
+        children: [
+          {
+            path: PATHS.profile.path,
+            element: <Profile />,
+            children: [
+              {
+                path: PATHS.profile.children?.posts.path,
+                element: <MyPosts />,
+              },
+            ],
+          },
+        ],
+      },
+      {
+        path: PATHS.posts.path,
+        children: [
+          {
+            index: true,
+            element: <Home />,
+          },
+          {
+            path: PATHS.posts.children?.post.path,
+            element: <Post />,
+          },
+        ],
+      },
+      {
+        path: PATHS.users.path,
+        children: [
+          {
+            index: true,
+            element: <Users />,
+          },
+          {
+            path: PATHS.users.children?.user.path,
+            element: <User />,
+          },
+        ],
+      },
+      {
+        path: '*',
+        element: <div>Not found</div>,
       },
     ],
   },

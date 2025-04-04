@@ -1,10 +1,10 @@
 import { ElementType } from 'react';
 
 export type Route = {
-  path: string;
-  element: React.ReactNode;
-  children?: Route[];
+  path?: string;
+  element?: React.ReactNode;
   index?: boolean;
+  children?: Route[];
 };
 
 export type PATH = {

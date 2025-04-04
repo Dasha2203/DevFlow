@@ -1,19 +1,17 @@
-import { BrowserRouter, Route, Routes } from 'react-router';
+import { BrowserRouter, Routes } from 'react-router';
+import { useGetMe } from '@api/hooks';
+import { CircularProgress } from '@mui/material';
 import handleRoutes from './handle-routes';
 import { ROUTES } from './routes';
 
 const Routing = () => {
+  const { loading } = useGetMe(true);
+
+  if (loading) return <CircularProgress sx={{ mx: 'auto', mt: 40 }} />;
+
   return (
     <BrowserRouter>
-      <Routes>
-        {/* <Route path={PATHS.users.path}>
-          <Route index element={<Users />} /> */}
-        {/* Динамический маршрут для пользователя */}
-        {/* <Route path=":userid" element={<User />} />
-        </Route> */}
-        {handleRoutes(ROUTES)}
-        <Route path="*" element={<div>Not found</div>} />
-      </Routes>
+      <Routes>{handleRoutes(ROUTES)}</Routes>
     </BrowserRouter>
   );
 };
