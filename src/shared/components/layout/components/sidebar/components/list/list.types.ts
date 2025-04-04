@@ -5,7 +5,3 @@ export type ListItem = {
   text: string;
   icon: ElementType;
 };
-
-export type ListProps = {
-  items: ListItem[];
-};

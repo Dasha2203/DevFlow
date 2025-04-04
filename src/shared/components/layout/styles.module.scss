@@ -4,11 +4,6 @@
   flex-direction: column;
   min-height: 100svh;
   transition: margin 0.3s ease;
-
-  @media (max-width: 600px) {
-    margin-left: 0;
-    width: 100%;
-  }
 }
 
 .container {

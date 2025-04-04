@@ -9,18 +9,23 @@ import {
   Typography,
 } from '@mui/material';
 import { HeaderProps } from './header.types';
+import { useAppSelector } from '@app/store/hooks';
+import { AuthenticatedActions, NotAuthenticatedActions } from './components';
 
 export const Header = ({ isAuth, isMenuOpen, setIsMenuOpen }: HeaderProps) => {
+  const { user } = useAppSelector((state) => state.user);
   const handleCloseSidebar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  console.log('header');
 
   return (
     <AppBar>
       <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           {!isMenuOpen && (
-            <IconButton onClick={handleCloseSidebar}>
+            <IconButton sx={{ color: 'white' }} onClick={handleCloseSidebar}>
               <MenuIcon />
             </IconButton>
           )}
@@ -31,32 +36,7 @@ export const Header = ({ isAuth, isMenuOpen, setIsMenuOpen }: HeaderProps) => {
           </Typography>
         </Box>
 
-        {isAuth && (
-          <Box sx={{ display: 'flex', gap: '10px' }}>
-            <Button
-              component={Link}
-              to="/login"
-              variant="text"
-              color="primary"
-              sx={{
-                color: 'white',
-              }}
-            >
-              Login
-            </Button>
-            <Button
-              component={Link}
-              to="/register"
-              variant="text"
-              color="primary"
-              sx={{
-                color: 'white',
-              }}
-            >
-              Register
-            </Button>
-          </Box>
-        )}
+        {user ? <AuthenticatedActions /> : <NotAuthenticatedActions />}
       </Toolbar>
     </AppBar>
   );

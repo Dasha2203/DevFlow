@@ -1,30 +1,40 @@
 import { Link } from 'react-router';
 import {
-  List as MuiList,
   ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  List as MuiList,
 } from '@mui/material';
-import { ListProps } from './list.types';
+import { PATHS } from '@shared/routes';
 import styles from './styles.module.scss';
 
-export const List = ({ items }: ListProps) => {
+const filteredPaths = Object.values(PATHS).filter(
+  (pathObj) => pathObj.path !== 'login' && pathObj.path !== 'register'
+);
+
+export const List = () => {
   return (
     <MuiList>
-      {items.map(({ link, text, icon: Icon }) => (
+      {filteredPaths.map((item) => (
         <ListItem
-          key={link}
+          key={item.path}
           disablePadding
           component={Link}
-          to={link}
+          to={item.path}
           className={styles['list__item-link']}
         >
           <ListItemButton>
-            <ListItemIcon>
-              <Icon />
-            </ListItemIcon>
-            <ListItemText className={styles['list__text']} primary={text} />
+            {item.icon && (
+              <ListItemIcon>
+                <item.icon />
+              </ListItemIcon>
+            )}
+
+            <ListItemText
+              className={styles['list__text']}
+              primary={item.text}
+            />
           </ListItemButton>
         </ListItem>
       ))}
