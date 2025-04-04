@@ -30,7 +30,7 @@
       "@shared/*": ["src/shared/*"],
       "@components/*": ["src/shared/components/*"],
       "@modules": ["src/modules"],
-      "@pages/*": ["src/pages/*"]
+      "@pages": ["src/pages"]
     }
   },
   "include": ["src"]

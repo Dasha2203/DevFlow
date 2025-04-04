@@ -1,6 +1,3 @@
-import { CreateQuestion } from '@pages/create-question';
-import { EditQuestion } from '@pages/edit-question';
-import { Home } from '@pages/home';
 import {
   Login,
   Register,
@@ -8,11 +5,14 @@ import {
   User,
   Profile,
   MyQuestions,
-} from '@pages/index';
-import { MyPosts } from '@pages/my-posts/my-posts';
-import { Post } from '@pages/post';
-import { QuestionPage } from '@pages/question';
-import { Questions } from '@pages/questions';
+  Home,
+  EditQuestion,
+  CreateQuestion,
+  Post,
+  QuestionPage,
+  Questions,
+  MyPosts,
+} from '@pages';
 import { Layout } from '@shared/components';
 import { Route } from '@shared/routes';
 import { PATHS } from '@shared/routes/paths';

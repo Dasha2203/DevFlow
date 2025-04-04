@@ -8,3 +8,6 @@ export * from './question';
 export * from './questions';
 export * from './profile';
 export * from './my-questions';
+export * from './home';
+export * from './post';
+export * from './my-posts';
