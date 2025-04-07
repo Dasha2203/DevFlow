@@ -1,24 +1,15 @@
 import { Link } from 'react-router';
 import MenuIcon from '@mui/icons-material/Menu';
-import {
-  AppBar,
-  Box,
-  Button,
-  IconButton,
-  Toolbar,
-  Typography,
-} from '@mui/material';
+import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material';
 import { HeaderProps } from './header.types';
 import { useAppSelector } from '@app/store/hooks';
 import { AuthenticatedActions, NotAuthenticatedActions } from './components';
 
-export const Header = ({ isAuth, isMenuOpen, setIsMenuOpen }: HeaderProps) => {
+export const Header = ({ isMenuOpen, setIsMenuOpen }: HeaderProps) => {
   const { user } = useAppSelector((state) => state.user);
   const handleCloseSidebar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
-  console.log('header');
 
   return (
     <AppBar>

@@ -17,7 +17,6 @@ export const useGetUserStatistic = () => {
 
       setStatistic(statistic);
       setUser(userProps);
-      console.log(statistic);
     } catch (err) {
       setError('Something went wrong');
       console.log(err);

@@ -5,18 +5,12 @@ import { Header, Sidebar } from '@shared/components/layout/components';
 import { drawerWidth } from '@shared/components/layout/components/sidebar/const';
 import styles from './styles.module.scss';
 
-const isAuth = true;
-
 export const Layout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <>
-      <Header
-        isAuth={isAuth}
-        isMenuOpen={isMenuOpen}
-        setIsMenuOpen={setIsMenuOpen}
-      />
+      <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <div>
         <Sidebar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
         <Box
