@@ -15,7 +15,7 @@ export const Post = () => {
     <>
       {post && <PostCard {...post} />}
 
-      <Typography variant="h5" component="p" sx={{ my: 4 }}>
+      <Typography variant="h5" component="div" sx={{ my: 4 }}>
         Comments <Chip label={post?.comments.length} />
       </Typography>
 
