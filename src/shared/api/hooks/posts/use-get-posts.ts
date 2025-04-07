@@ -2,7 +2,8 @@ import { useCallback, useState } from 'react';
 import { getPosts } from '@api/services';
 import { GetPostsParams, Meta, Post } from '@api/types';
 
-const LIMIT = 10;
+const LIMIT = 9;
+
 const initialMeta: Meta = {
   currentPage: 1,
   totalPages: 1,
@@ -24,7 +25,7 @@ export const useGetPosts = () => {
     setError(null);
 
     try {
-      const { data } = await getPosts({ limit: LIMIT, ...params });
+      const { data } = await getPosts(params);
 
       setPosts(data.data);
       setMeta(data.meta);

@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { useGetPosts } from '@api/hooks';
 import { Box, Button, CircularProgress, Grid, Pagination } from '@mui/material';
 import { NoResult, PostCard } from '@components';
-import { useUpdateSearchParams } from '@shared/hooks';
+import { useDeviceType, useUpdateSearchParams } from '@shared/hooks';
 import styles from './styles.module.scss';
 import { useAppSelector } from '@app/store/hooks';
 
@@ -11,16 +11,17 @@ export const PostsList = ({ userId }: { userId?: string }) => {
   const { posts, getPosts, meta, loading } = useGetPosts();
   const { searchParams, updateSearchParams } = useUpdateSearchParams();
   const { user } = useAppSelector((state) => state.user);
+  const { isMobile } = useDeviceType(1200);
 
   const parsedParams = useMemo(
     () => ({
       page: Number(searchParams.get('page')) || 1,
-      limit: Number(searchParams.get('limit')) || 9,
+      limit: Number(searchParams.get('limit')) || isMobile ? 10 : 9,
       search: searchParams.get('search') || undefined,
       sortBy: searchParams.get('sortBy') || undefined,
       userId,
     }),
-    [searchParams, userId]
+    [searchParams, userId, isMobile]
   );
 
   const handleChangePage = (_: unknown, page: number) => {
