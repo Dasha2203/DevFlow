@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
 import clsx from 'clsx';
@@ -24,6 +25,7 @@ export const QuestionForm = ({
     handleSubmit,
     control,
     trigger,
+    watch,
     formState: { errors, isSubmitting },
   } = useForm<FormData>({
     defaultValues: initialValues || initialState,
@@ -31,7 +33,11 @@ export const QuestionForm = ({
   });
   const navigate = useNavigate();
   const { updateQuestion, error: updateError } = useEditQuestion();
-  const { createQuestion, question, error: createError } = useCreateQuestion();
+  const { createQuestion, question } = useCreateQuestion();
+  const watchedValues = watch();
+  const isChanged =
+    JSON.stringify(watchedValues) !==
+    JSON.stringify(initialValues || initialState);
 
   const onSubmit = async (data: FormData) => {
     if (initialValues?.id) {
@@ -44,11 +50,13 @@ export const QuestionForm = ({
     }
 
     await createQuestion(data);
+  };
 
-    if (question && !createError) {
+  useEffect(() => {
+    if (question) {
       navigate(`/questions/${question.id}`);
     }
-  };
+  }, [question, navigate]);
 
   return (
     <Box
@@ -89,7 +97,7 @@ export const QuestionForm = ({
         type="submit"
         variant="contained"
         color="primary"
-        disabled={isSubmitting}
+        disabled={isSubmitting || !isChanged}
         loading={isSubmitting}
       >
         {initialValues ? 'Save Changes' : 'Create question'}

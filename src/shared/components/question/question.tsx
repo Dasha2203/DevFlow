@@ -9,7 +9,7 @@ import {
   IconButton,
   Typography,
 } from '@mui/material';
-import { Delete as DeleteIcon } from '@mui/icons-material';
+import { Delete as DeleteIcon, Edit as EditIcon } from '@mui/icons-material';
 import { Editor } from '@monaco-editor/react';
 import { useAppSelector } from '@app/store/hooks';
 import { useDeleteQuestion } from '@api/hooks';
@@ -89,17 +89,27 @@ export const Question = ({
         </Box>
         <CardActions>
           {me?.id === user.id && (
-            <IconButton
-              aria-label="Remove this post"
-              onClick={(e) => {
-                e.preventDefault();
-                setIsOpen(true);
-              }}
-              disabled={deleteLoading}
-              color="error"
-            >
-              <DeleteIcon />
-            </IconButton>
+            <>
+              <IconButton
+                aria-label="Edit this this post"
+                color="primary"
+                component={Link}
+                to={`/questions/${id}/edit`}
+              >
+                <EditIcon />
+              </IconButton>
+              <IconButton
+                aria-label="Remove this post"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsOpen(true);
+                }}
+                disabled={deleteLoading}
+                color="error"
+              >
+                <DeleteIcon />
+              </IconButton>
+            </>
           )}
         </CardActions>
       </CardContent>
