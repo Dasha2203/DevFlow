@@ -31,6 +31,10 @@ export const PostForm = ({ id, initialValues }: PostFormProps) => {
     defaultValues: initialValues || { code: '', language: '' },
   });
   const selectedLanguage = watch('language');
+  const watchedValues = watch();
+  const isChanged =
+    JSON.stringify(watchedValues) !==
+    JSON.stringify(initialValues || initialValues);
 
   const onSubmit = async (data: FormData) => {
     if (id) {
@@ -43,11 +47,13 @@ export const PostForm = ({ id, initialValues }: PostFormProps) => {
     }
 
     await createPost(data);
+  };
 
-    if (newPost && !errorCreate) {
+  useEffect(() => {
+    if (newPost) {
       navigate(`/posts/${newPost.id}`);
     }
-  };
+  }, [newPost, navigate]);
 
   useEffect(() => {
     getLanguages();
@@ -92,7 +98,7 @@ export const PostForm = ({ id, initialValues }: PostFormProps) => {
           type="submit"
           variant="contained"
           color="primary"
-          disabled={isSubmitting}
+          disabled={isSubmitting || !isChanged}
           loading={isSubmitting}
         >
           {initialValues ? 'Save Changes' : 'Create Post'}

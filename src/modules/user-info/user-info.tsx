@@ -1,5 +1,6 @@
-import { useGetUserStatistic } from '@api/hooks';
-
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router';
+import clsx from 'clsx';
 import PersonIcon from '@mui/icons-material/Person';
 import {
   Avatar,
@@ -9,13 +10,11 @@ import {
   CircularProgress,
   Typography,
 } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router';
-import styles from './styles.module.scss';
+import { useGetUserStatistic } from '@api/hooks';
+import { NoResult } from '@components';
 import { Statistics } from './components/statistic';
 import { UserInfoProps } from './user-info.types';
-import { NoResult } from '@components';
-import clsx from 'clsx';
+import styles from './styles.module.scss';
 
 export const UserInfo = ({ id, className, style }: UserInfoProps) => {
   const { userid } = useParams<{ userid: string }>();
@@ -59,22 +58,18 @@ export const UserInfo = ({ id, className, style }: UserInfoProps) => {
         >
           {expanded ? 'Hide Statistics' : 'Show Statistics'}
         </Button>
-        <Button
-          variant="text"
-          color={'primary'}
-          component={Link}
-          to="/profile/posts"
-        >
-          My posts
-        </Button>
-        <Button
-          variant="text"
-          color={'primary'}
-          component={Link}
-          to="/profile/questions"
-        >
-          My questions
-        </Button>
+        {id === user?.id && (
+          <>
+            <Button
+              variant="text"
+              color={'primary'}
+              component={Link}
+              to="/profile/posts"
+            >
+              My posts
+            </Button>
+          </>
+        )}
       </Box>
       {expanded && statistic && <Statistics {...statistic} />}
     </Box>

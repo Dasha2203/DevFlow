@@ -4,7 +4,6 @@ import {
   Users,
   User,
   Profile,
-  MyQuestions,
   Home,
   EditQuestion,
   CreateQuestion,
@@ -12,6 +11,8 @@ import {
   QuestionPage,
   Questions,
   MyPosts,
+  CreatePost,
+  EditPost,
 } from '@pages';
 import { Layout } from '@shared/components';
 import { Route } from '@shared/routes';
@@ -81,10 +82,6 @@ export const ROUTES: Route[] = [
                 path: PATHS.profile.children?.posts.path,
                 element: <MyPosts />,
               },
-              {
-                path: PATHS.profile.children?.questions.path,
-                element: <MyQuestions />,
-              },
             ],
           },
         ],
@@ -99,6 +96,19 @@ export const ROUTES: Route[] = [
           {
             path: PATHS.posts.children?.post.path,
             element: <Post />,
+          },
+          {
+            element: <ProtectedRoutes />,
+            children: [
+              {
+                path: PATHS.posts.children?.create.path,
+                element: <CreatePost />,
+              },
+              {
+                path: PATHS.posts.children?.edit.path,
+                element: <EditPost />,
+              },
+            ],
           },
         ],
       },

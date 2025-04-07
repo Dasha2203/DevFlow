@@ -1,13 +1,16 @@
 import { useEffect, useMemo } from 'react';
+import { Link } from 'react-router';
 import { useGetPosts } from '@api/hooks';
-import { Box, CircularProgress, Grid, Pagination } from '@mui/material';
+import { Box, Button, CircularProgress, Grid, Pagination } from '@mui/material';
 import { NoResult, PostCard } from '@components';
 import { useUpdateSearchParams } from '@shared/hooks';
 import styles from './styles.module.scss';
+import { useAppSelector } from '@app/store/hooks';
 
 export const PostsList = ({ userId }: { userId?: string }) => {
   const { posts, getPosts, meta, loading } = useGetPosts();
   const { searchParams, updateSearchParams } = useUpdateSearchParams();
+  const { user } = useAppSelector((state) => state.user);
 
   const parsedParams = useMemo(
     () => ({
@@ -34,6 +37,19 @@ export const PostsList = ({ userId }: { userId?: string }) => {
 
   return (
     <Box className={styles['posts-list']}>
+      {user && (
+        <Button
+          component={Link}
+          to={'/posts/new'}
+          color="success"
+          variant="outlined"
+          sx={{
+            mb: 2,
+          }}
+        >
+          Create new post
+        </Button>
+      )}
       <Grid
         container
         spacing={3}

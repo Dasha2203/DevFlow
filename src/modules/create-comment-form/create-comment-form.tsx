@@ -1,12 +1,11 @@
-import { useNavigate } from 'react-router';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router';
 import { z } from 'zod';
 import { useCreateComment } from '@api/hooks';
-import { Box, Button, Stack } from '@mui/material';
+import { useAppSelector } from '@app/store/hooks';
 import { FormField } from '@components';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useAppSelector } from '@app/store/hooks';
-import { PATHS } from '@shared/routes';
+import { Box, Button, Stack } from '@mui/material';
 import { ErrorText } from '@shared/ui';
 import {
   CommentFormFields,
@@ -38,7 +37,8 @@ export const CreateCommentForm = ({ id, ...props }: CreateCommentFormProps) => {
 
   const onSubmitHandler = ({ content }: CommentFormFields) => {
     if (!me) {
-      return navigate(PATHS.register.path);
+      navigate('/register');
+      return;
     }
     if (content.trim() === '') {
       return;
