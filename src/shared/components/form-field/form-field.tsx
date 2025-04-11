@@ -1,12 +1,12 @@
-import { Controller, FieldValues } from 'react-hook-form';
-import { TextField } from '@mui/material';
-import { FormFieldProps } from './form-field.types';
+import { Controller, FieldValues } from "react-hook-form";
+import { TextField } from "@mui/material";
+import { FormFieldProps } from "./form-field.types";
 
 export const FormField = <T extends FieldValues>({
   name,
   label,
   control,
-  type = 'text',
+  type = "text",
   error,
   helperText,
   onChange,
