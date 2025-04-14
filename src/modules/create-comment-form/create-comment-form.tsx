@@ -1,6 +1,5 @@
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
-import { z } from 'zod';
 import { useCreateComment } from '@api/hooks';
 import { useAppSelector } from '@app/store/hooks';
 import { FormField } from '@components';
@@ -11,13 +10,7 @@ import {
   CommentFormFields,
   CreateCommentFormProps,
 } from './create-comment-form.types';
-
-const commentSchema = z.object({
-  content: z
-    .string()
-    .min(1, 'A comment cannot be empty')
-    .max(200, 'A comment cannot be longer than 200 characters'),
-});
+import { commentSchema } from './create-comment.schema';
 
 export const CreateCommentForm = ({ id, ...props }: CreateCommentFormProps) => {
   const navigate = useNavigate();
@@ -38,9 +31,6 @@ export const CreateCommentForm = ({ id, ...props }: CreateCommentFormProps) => {
   const onSubmitHandler = ({ content }: CommentFormFields) => {
     if (!me) {
       navigate('/register');
-      return;
-    }
-    if (content.trim() === '') {
       return;
     }
 
