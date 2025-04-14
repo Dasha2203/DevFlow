@@ -1,30 +1,28 @@
-import { forwardRef } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import { InputAdornment, TextField } from '@mui/material';
-import { useUpdateSearchParams } from '@shared/hooks';
+import { useDebounce, useUpdateSearchParams } from '@shared/hooks';
 import { SearchFieldProps } from './search-field.types';
 
 export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
-  ({ onSearch, defaultValue, ...props }, ref) => {
+  ({ defaultValue, ...props }, ref) => {
     const { searchParams, updateSearchParams } = useUpdateSearchParams();
+    const [query, setQuery] = useState(
+      defaultValue || searchParams.get('search') || ''
+    );
+    const debouncedQuery = useDebounce(query, 500);
+
+    useEffect(() => {
+      updateSearchParams('search', debouncedQuery);
+    }, [debouncedQuery, updateSearchParams]);
 
     return (
       <TextField
         inputRef={ref}
         variant="outlined"
         size="medium"
-        defaultValue={defaultValue || searchParams.get('search') || ''}
-        onKeyDown={(event) => {
-          if (event.key === 'Enter') {
-            const value = (event.target as HTMLInputElement).value;
-
-            updateSearchParams('search', value);
-
-            if (onSearch) {
-              onSearch();
-            }
-          }
-        }}
+        defaultValue={defaultValue || query}
+        onChange={(e) => setQuery(e.target.value)}
         slotProps={{
           input: {
             startAdornment: (
