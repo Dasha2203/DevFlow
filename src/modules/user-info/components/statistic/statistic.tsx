@@ -1,6 +1,6 @@
-import { UserStatistic } from '@api/types';
-import { List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 import { JSX } from 'react';
+import { List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
+import { UserStatistic } from '@api/types';
 import {
   BarChart,
   CheckCircle,
@@ -10,11 +10,10 @@ import {
   ListAlt,
   ThumbDown,
 } from '@mui/icons-material';
+import { Entries } from '@shared/types';
+import { StatisticProps } from './statistic.types';
 
-const statIcons: Record<
-  keyof UserStatistic,
-  { icon: JSX.Element; text: string }
-> = {
+const statIcons: Record<string, { icon: JSX.Element; text: string }> = {
   snippetsCount: { icon: <ListAlt color="primary" />, text: 'Snippets count' },
   rating: { icon: <BarChart color="secondary" />, text: 'Rating' },
   commentsCount: { icon: <Comment color="success" />, text: 'Comments count' },
@@ -34,18 +33,15 @@ const statIcons: Record<
   },
 };
 
-export const Statistics = (statistic: UserStatistic) => {
+export const Statistic = (statistic: StatisticProps) => {
+  const entriesStatistic = Object.entries(statistic) as Entries<UserStatistic>;
+
   return (
     <List>
-      {Object.entries(statistic).map(([key, value]) => (
+      {entriesStatistic.map(([key, value]) => (
         <ListItem>
-          <ListItemAvatar>
-            {statIcons[key as keyof typeof statIcons].icon}
-          </ListItemAvatar>
-          <ListItemText
-            primary={statIcons[key as keyof typeof statIcons].text}
-            secondary={value}
-          />
+          <ListItemAvatar>{statIcons[key].icon}</ListItemAvatar>
+          <ListItemText primary={statIcons[key].text} secondary={value} />
         </ListItem>
       ))}
     </List>

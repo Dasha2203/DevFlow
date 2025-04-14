@@ -12,7 +12,7 @@ import {
 } from '@mui/material';
 import { useGetUserStatistic } from '@api/hooks';
 import { NoResult } from '@components';
-import { Statistics } from './components/statistic';
+import { Statistic } from './components/statistic';
 import { UserInfoProps } from './user-info.types';
 import styles from './styles.module.scss';
 
@@ -71,7 +71,7 @@ export const UserInfo = ({ id, className, style }: UserInfoProps) => {
           </>
         )}
       </Box>
-      {expanded && statistic && <Statistics {...statistic} />}
+      {expanded && statistic && <Statistic {...statistic} />}
     </Box>
   );
 };
