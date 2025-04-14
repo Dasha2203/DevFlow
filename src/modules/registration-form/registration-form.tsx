@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Link as MuiLink, Typography } from '@mui/material';
 import { Credentials } from '@api/types';
 import { useRegister } from '@api/hooks';
 import { setUser } from '@slices/user-slice';
@@ -84,6 +84,9 @@ export const RegistrationForm = () => {
       >
         Sign up
       </Button>
+      <MuiLink component={Link} to="/login" sx={{ textAlign: 'center' }}>
+        Login
+      </MuiLink>
     </Box>
   );
 };

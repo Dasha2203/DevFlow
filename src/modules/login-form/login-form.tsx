@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Button, Typography, Link as MuiLink } from '@mui/material';
 import { Credentials } from '@api/types';
 import { setUser } from '@slices/user-slice';
 import { FormField, PasswordField } from '@components';
@@ -76,6 +76,9 @@ export const LoginForm = () => {
       >
         Sign in
       </Button>
+      <MuiLink component={Link} to="/register" sx={{ textAlign: 'center' }}>
+        Register
+      </MuiLink>
     </Box>
   );
 };
