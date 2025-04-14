@@ -5,12 +5,12 @@ import { useDispatch } from 'react-redux';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Box, Button, Typography } from '@mui/material';
 import { Credentials } from '@api/types';
+import { useRegister } from '@api/hooks';
 import { setUser } from '@slices/user-slice';
 import { FormField, PasswordField } from '@components';
-import { formSchema } from './registration-schema';
+import { formSchema } from './registration-form.schema';
 import { RegisterFormFields } from './types';
 import styles from './styles.module.scss';
-import { useRegister } from '@api/hooks';
 
 export const RegistrationForm = () => {
   const dispatch = useDispatch();
