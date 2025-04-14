@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { Box } from '@mui/material';
-import { Comment, NoResult } from '@components';
+import { Comment } from '@components';
 import { useDeleteComment, useEditComment } from '@api/hooks';
 import { CommentsListProps } from './comments-list.types';
 import styles from './styles.module.scss';
@@ -12,8 +12,6 @@ export const CommentsList = ({
 }: CommentsListProps) => {
   const { deleteComment } = useDeleteComment();
   const { editComment } = useEditComment();
-
-  if (!comments.length) return <NoResult className={styles['no-result']} />;
 
   return (
     <>
