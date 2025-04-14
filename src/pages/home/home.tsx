@@ -1,4 +1,4 @@
-import { PostsList } from '@modules/posts-list/posts-list';
+import { PostsList } from '@modules';
 import { SearchField } from '@shared/components';
 import { PageTitle } from '@shared/ui';
 

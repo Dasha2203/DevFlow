@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { getLanguages } from '@api/services';
 import { Language } from '@api/types';
 
@@ -25,8 +25,13 @@ export const useGetLanguages = () => {
     }
   }, []);
 
+  useEffect(() => {
+    fetchLanguages();
+  }, [fetchLanguages]);
+
   return {
     getLanguages: fetchLanguages,
+    refetch: fetchLanguages,
     languages,
     loading,
     error,

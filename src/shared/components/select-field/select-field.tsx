@@ -8,6 +8,7 @@ export const SelectField = <T extends FieldValues>({
   options,
   error,
   helperText,
+  label,
 }: SelectFieldProps<T>) => {
   return (
     <Controller
@@ -19,6 +20,7 @@ export const SelectField = <T extends FieldValues>({
           size="small"
           error={error}
           helperText={helperText}
+          label={label}
           {...field}
         >
           {options.map((lang) => (
