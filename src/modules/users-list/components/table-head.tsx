@@ -10,12 +10,16 @@ type UsersTableHeadProps = {
 
 export const UsersTableHead = ({ meta }: UsersTableHeadProps) => {
   const { updateSearchParams } = useUpdateSearchParams();
+  const sortByColumn = meta?.sortBy[0][0];
+  const direction = meta?.sortBy[0][1].toLowerCase() as 'asc' | 'desc';
+
   const handleSort = (field: string) => {
     const column = field.toLowerCase();
-    const currentSort = meta?.sortBy?.[0];
-    const isActive = currentSort?.[0] === column;
+    const isActive = sortByColumn === column;
     const nextSortOrder =
-      isActive && currentSort[1] === 'ASC' ? SortOrder.DESC : SortOrder.ASC;
+      isActive && direction.toUpperCase() === SortOrder.ASC
+        ? SortOrder.DESC
+        : SortOrder.ASC;
 
     updateSearchParams('sortBy', `${column}:${nextSortOrder}`);
   };
@@ -23,27 +27,21 @@ export const UsersTableHead = ({ meta }: UsersTableHeadProps) => {
   return (
     <TableHead>
       <TableRow>
-        {columns.map((column) => {
-          const isActive = meta?.sortBy?.[0]?.[0] === column.toLowerCase();
-          const direction = (meta?.sortBy?.[0]?.[1]?.toLowerCase() ??
-            undefined) as 'asc' | 'desc' | undefined;
-
-          return (
-            <TableCell
-              key={column}
-              sortDirection={direction}
-              sx={{ fontWeight: 700 }}
+        {columns.map((column) => (
+          <TableCell
+            key={column}
+            sortDirection={direction}
+            sx={{ fontWeight: 700 }}
+          >
+            <TableSortLabel
+              active={sortByColumn === column.toLowerCase()}
+              direction={direction}
+              onClick={() => handleSort(column)}
             >
-              <TableSortLabel
-                active={isActive}
-                direction={direction}
-                onClick={() => handleSort(column)}
-              >
-                {column}
-              </TableSortLabel>
-            </TableCell>
-          );
-        })}
+              {column}
+            </TableSortLabel>
+          </TableCell>
+        ))}
       </TableRow>
     </TableHead>
   );

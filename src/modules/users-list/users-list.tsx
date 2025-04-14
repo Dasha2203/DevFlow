@@ -60,13 +60,12 @@ const UsersList = () => {
           ))}
         </TableBody>
       </Table>
-
       <TablePagination
         component="div"
         rowsPerPageOptions={rowsPerPageOptions}
         count={meta.totalItems || 0}
         rowsPerPage={meta.itemsPerPage || rowsPerPageOptions[0]}
-        page={meta.currentPage ? meta.currentPage - 1 : 1}
+        page={meta.currentPage - 1}
         onPageChange={handleChangePage}
         onRowsPerPageChange={(e) => setSearchParams({ limit: e.target.value })}
       />
