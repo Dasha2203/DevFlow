@@ -16,7 +16,6 @@ export const PATHS: Record<string, PATH> = {
   posts: {
     path: 'posts',
     text: 'Post snippet',
-    icon: TextSnippetIcon,
     children: {
       post: {
         path: ':postid',

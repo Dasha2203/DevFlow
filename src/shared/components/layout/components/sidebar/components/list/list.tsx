@@ -10,7 +10,10 @@ import { PATHS } from '@shared/routes';
 import styles from './styles.module.scss';
 
 const filteredPaths = Object.values(PATHS).filter(
-  (pathObj) => pathObj.path !== 'login' && pathObj.path !== 'register'
+  (pathObj) =>
+    pathObj.path !== 'login' &&
+    pathObj.path !== 'register' &&
+    pathObj.path !== 'posts'
 );
 
 export const List = () => {

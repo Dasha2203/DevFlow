@@ -90,10 +90,6 @@ export const ROUTES: Route[] = [
         path: PATHS.posts.path,
         children: [
           {
-            index: true,
-            element: <Home />,
-          },
-          {
             path: PATHS.posts.children?.post.path,
             element: <Post />,
           },
@@ -110,6 +106,7 @@ export const ROUTES: Route[] = [
               },
             ],
           },
+          { index: true, element: <div>Not found</div> },
         ],
       },
       {
