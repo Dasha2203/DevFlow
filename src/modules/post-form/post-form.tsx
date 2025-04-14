@@ -11,7 +11,7 @@ import { FormData, PostFormProps } from './post-form.types';
 import styles from './styles.module.scss';
 
 export const PostForm = ({ id, initialValues }: PostFormProps) => {
-  const { createPost, post: newPost, error: errorCreate } = useCreatePost();
+  const { createPost, error: errorCreate } = useCreatePost();
   const { updatePost, error: errorUpdate } = useEditPost();
   const navigate = useNavigate();
   const { languages, loading: loadingLanguages } = useGetLanguages();
@@ -43,12 +43,6 @@ export const PostForm = ({ id, initialValues }: PostFormProps) => {
 
     await createPost(data);
   };
-
-  useEffect(() => {
-    if (newPost) {
-      navigate(`/posts/${newPost.id}`);
-    }
-  }, [newPost, navigate]);
 
   useEffect(() => {
     if (!initialValues) return;
