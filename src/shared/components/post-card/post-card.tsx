@@ -18,9 +18,13 @@ export const PostCard = ({ id, code, language, marks, user: author }: Post) => {
           defaultValue={code}
           theme="vs-dark"
           options={{
-            readOnly: true,
+            scrollbar: {
+              alwaysConsumeMouseWheel: false,
+            },
+            minimap: { enabled: false },
           }}
         />
+
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             <Person2Icon /> {author.username}

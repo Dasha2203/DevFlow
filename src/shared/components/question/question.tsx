@@ -79,7 +79,10 @@ export const Question = ({
           defaultValue={attachedCode}
           theme="vs-dark"
           options={{
-            readOnly: true,
+            scrollbar: {
+              alwaysConsumeMouseWheel: false,
+            },
+            minimap: { enabled: false },
           }}
         />
         <Box sx={{ display: 'flex', alignItems: 'center', mt: 1 }}>
