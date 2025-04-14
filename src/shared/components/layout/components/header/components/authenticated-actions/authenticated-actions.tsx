@@ -2,8 +2,11 @@ import { Link } from 'react-router-dom';
 import { Box, IconButton } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import useLogout from '@api/hooks/auth/use-logout';
 
 export const AuthenticatedActions = () => {
+  const { logout } = useLogout();
+
   return (
     <Box sx={{ display: 'flex', gap: '10px' }}>
       <IconButton
@@ -14,12 +17,7 @@ export const AuthenticatedActions = () => {
       >
         <PersonIcon />
       </IconButton>
-      <IconButton
-        component={Link}
-        to="/logout"
-        color="primary"
-        sx={{ color: 'white' }}
-      >
+      <IconButton onClick={logout} color="primary" sx={{ color: 'white' }}>
         <ExitToAppIcon />
       </IconButton>
     </Box>
