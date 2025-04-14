@@ -1,18 +1,23 @@
-import { useCallback } from "react";
-import { useSearchParams } from "react-router";
+import { useCallback } from 'react';
+import { useSearchParams } from 'react-router';
 
 export const useUpdateSearchParams = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const updateSearchParams = useCallback(
-    (key: string, value: string | number) => {
+    (key: string, value: string | number | null) => {
       setSearchParams((prev) => {
         const params = new URLSearchParams(prev);
-        params.set(key, String(value));
+
+        if (!value) {
+          params.delete(key);
+        } else {
+          params.set(key, String(value));
+        }
         return params;
       });
     },
-    [setSearchParams]
+    []
   );
 
   return { searchParams, updateSearchParams };

@@ -16,12 +16,18 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
       updateSearchParams('search', debouncedQuery);
     }, [debouncedQuery, updateSearchParams]);
 
+    useEffect(() => {
+      if (!searchParams.get('search')) {
+        setQuery('');
+      }
+    }, [searchParams]);
+
     return (
       <TextField
         inputRef={ref}
         variant="outlined"
         size="medium"
-        defaultValue={defaultValue || query}
+        value={query}
         onChange={(e) => setQuery(e.target.value)}
         slotProps={{
           input: {

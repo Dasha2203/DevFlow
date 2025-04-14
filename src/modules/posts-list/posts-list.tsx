@@ -3,26 +3,24 @@ import { Link } from 'react-router';
 import { useGetPosts } from '@api/hooks';
 import { Box, Button, CircularProgress, Grid, Pagination } from '@mui/material';
 import { NoResult, PostCard } from '@components';
-import { useDeviceType, useUpdateSearchParams } from '@shared/hooks';
-import styles from './styles.module.scss';
+import { useUpdateSearchParams } from '@shared/hooks';
 import { useAppSelector } from '@app/store/hooks';
+import styles from './styles.module.scss';
 
 export const PostsList = ({ userId }: { userId?: string }) => {
   const { posts, getPosts, meta, loading } = useGetPosts();
   const { searchParams, updateSearchParams } = useUpdateSearchParams();
   const { user } = useAppSelector((state) => state.user);
-  const { isMobile } = useDeviceType(1200);
 
-  const parsedParams = useMemo(
-    () => ({
+  const parsedParams = useMemo(() => {
+    return {
       page: Number(searchParams.get('page')) || 1,
-      limit: Number(searchParams.get('limit')) || isMobile ? 10 : 9,
+      limit: Number(searchParams.get('limit')) || 10,
       search: searchParams.get('search') || undefined,
       sortBy: searchParams.get('sortBy') || undefined,
       userId,
-    }),
-    [searchParams, userId, isMobile]
-  );
+    };
+  }, [searchParams, userId]);
 
   const handleChangePage = (_: unknown, page: number) => {
     updateSearchParams('page', String(page));
@@ -63,9 +61,7 @@ export const PostsList = ({ userId }: { userId?: string }) => {
             key={post.id}
             size={{
               xs: 12,
-              sm: 12,
               md: 6,
-              lg: 4,
             }}
           >
             <PostCard {...post} />
