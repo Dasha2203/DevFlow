@@ -1,9 +1,5 @@
 import { UserInfo } from '@modules';
 
 export const User = () => {
-  return (
-    <>
-      <UserInfo />
-    </>
-  );
+  return <UserInfo />;
 };
