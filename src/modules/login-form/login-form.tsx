@@ -1,21 +1,17 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { Box, Button, Typography, Link as MuiLink } from '@mui/material';
-import { Credentials } from '@api/types';
-import { setUser } from '@slices/user-slice';
-import { FormField, PasswordField } from '@components';
+import { Link, useNavigate } from 'react-router';
+import { Box, Button, Link as MuiLink, Typography } from '@mui/material';
 import { useLogin } from '@api/hooks';
-import { LoginFormFields } from './login-form.types';
-import styles from './styles.module.scss';
+import { Credentials } from '@api/types';
+import { FormField, PasswordField } from '@components';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { formSchema } from './login-form-schema';
+import { LoginFormFields } from './login-form.types';
+import styles from './styles.module.scss';
 
 export const LoginForm = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { error, user, loginUser } = useLogin();
+  const { error, loginUser } = useLogin();
   const {
     handleSubmit,
     control,
@@ -28,15 +24,9 @@ export const LoginForm = () => {
     resolver: zodResolver(formSchema),
   });
 
-  useEffect(() => {
-    if (user) {
-      dispatch(setUser(user));
-      navigate('/');
-    }
-  }, [user, navigate, dispatch]);
-
   const onSubmit: SubmitHandler<Credentials> = async (data) => {
     await loginUser(data);
+    navigate('/');
   };
 
   return (

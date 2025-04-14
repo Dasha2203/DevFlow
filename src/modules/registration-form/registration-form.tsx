@@ -1,21 +1,17 @@
-import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
+import { Link, useNavigate } from 'react-router';
+import { useRegister } from '@api/hooks';
+import { Credentials } from '@api/types';
+import { FormField, PasswordField } from '@components';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Box, Button, Link as MuiLink, Typography } from '@mui/material';
-import { Credentials } from '@api/types';
-import { useRegister } from '@api/hooks';
-import { setUser } from '@slices/user-slice';
-import { FormField, PasswordField } from '@components';
 import { formSchema } from './registration-form.schema';
-import { RegisterFormFields } from './types';
 import styles from './styles.module.scss';
+import { RegisterFormFields } from './types';
 
 export const RegistrationForm = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { error, user, registerUser } = useRegister();
+  const { error, registerUser } = useRegister();
   const {
     handleSubmit,
     control,
@@ -29,15 +25,9 @@ export const RegistrationForm = () => {
     },
   });
 
-  useEffect(() => {
-    if (user) {
-      dispatch(setUser(user));
-      navigate('/');
-    }
-  }, [user, navigate, dispatch]);
-
   const onSubmit: SubmitHandler<Credentials> = async (data) => {
     await registerUser(data);
+    navigate('/');
   };
 
   return (

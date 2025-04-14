@@ -21,7 +21,7 @@ const useLogout = () => {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [dispatch]);
 
   return { logout: logoutUser, loading, error };
 };
