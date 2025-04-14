@@ -1,5 +1,5 @@
 import { PostForm } from '@modules';
-import { PageTitle } from '@shared/ui';
+import { PageTitle } from '@components';
 import styles from './styles.module.scss';
 
 export const CreatePost = () => {

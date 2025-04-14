@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router';
 import { PostForm } from '@modules';
 import { useGetPost } from '@api/hooks';
-import { PageTitle } from '@shared/ui';
+import { PageTitle } from '@components';
 import styles from './styles.module.scss';
 
 export const EditPost = () => {

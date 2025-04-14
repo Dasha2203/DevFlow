@@ -2,10 +2,9 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import { useCreateComment } from '@api/hooks';
 import { useAppSelector } from '@app/store/hooks';
-import { FormField } from '@components';
+import { FormField, ErrorText } from '@components';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Box, Button, Stack } from '@mui/material';
-import { ErrorText } from '@shared/ui';
 import {
   CommentFormFields,
   CreateCommentFormProps,

@@ -1,6 +1,5 @@
 import { QuestionsList } from '@modules';
-import { SearchField } from '@shared/components';
-import { PageTitle } from '@shared/ui';
+import { SearchField, PageTitle } from '@shared/components';
 
 export const Questions = () => {
   return (

@@ -1,6 +1,6 @@
 import { useGetMe } from '@api/hooks';
 import { PostsList } from '@modules';
-import { PageTitle } from '@shared/ui';
+import { PageTitle } from '@components';
 
 export const MyPosts = () => {
   const { user } = useGetMe();

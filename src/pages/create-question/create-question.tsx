@@ -1,7 +1,7 @@
 import { useAppSelector } from '@app/store/hooks';
 import { QuestionForm } from '@modules';
 import { CircularProgress } from '@mui/material';
-import { PageTitle } from '@shared/ui';
+import { PageTitle } from '@components';
 import styles from './styles.module.scss';
 
 export const CreateQuestion = () => {

@@ -8,3 +8,5 @@ export * from './select-field';
 export * from './editor-field';
 export * from './comment';
 export * from './question';
+export * from './error-text';
+export * from './page-title';

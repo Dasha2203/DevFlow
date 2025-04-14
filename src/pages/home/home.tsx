@@ -1,6 +1,5 @@
 import { PostsList } from '@modules';
-import { SearchField } from '@shared/components';
-import { PageTitle } from '@shared/ui';
+import { SearchField, PageTitle } from '@components';
 
 export const Home = () => {
   return (

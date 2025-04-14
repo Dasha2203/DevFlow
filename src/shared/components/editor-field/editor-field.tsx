@@ -1,6 +1,6 @@
 import { Controller, FieldValues } from 'react-hook-form';
 import { Editor } from '@monaco-editor/react';
-import { ErrorText } from '@shared/ui';
+import { ErrorText } from '@components';
 import { EditorFieldProps } from './editor-field.types';
 
 export const EditorField = <T extends FieldValues>({

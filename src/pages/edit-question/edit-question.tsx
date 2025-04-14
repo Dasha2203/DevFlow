@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router';
 import { CircularProgress } from '@mui/material';
 import { useGetQuestion } from '@api/hooks';
 import { isNumber } from '@shared/utils';
-import { ErrorText, PageTitle } from '@shared/ui';
+import { ErrorText, PageTitle } from '@components';
 import { QuestionForm } from '@modules';
 import { useAppSelector } from '@app/store/hooks';
 import styles from './styles.module.scss';
