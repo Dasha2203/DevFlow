@@ -10,7 +10,7 @@ export const getUserStatistic = async (
     );
     return data.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw error;
   }
 };

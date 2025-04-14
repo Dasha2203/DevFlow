@@ -8,7 +8,7 @@ export const editPost = async (
   try {
     await api.patch<Response<Post>>(`/snippets/${id}`, params);
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw error;
   }
 };

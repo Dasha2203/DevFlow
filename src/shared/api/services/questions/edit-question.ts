@@ -8,7 +8,7 @@ export const editQuestion = async (
   try {
     await api.patch<Response<Question>>(`/questions/${id}`, params);
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw error;
   }
 };

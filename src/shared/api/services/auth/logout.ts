@@ -4,7 +4,7 @@ export const logout = async () => {
   try {
     return await api.post('/auth/logout');
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw error;
   }
 };

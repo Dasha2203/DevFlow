@@ -6,7 +6,7 @@ export const deleteQuestion = async (id: string | number): Promise<void> => {
 
     return;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw error;
   }
 };

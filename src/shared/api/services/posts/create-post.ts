@@ -7,7 +7,7 @@ export const createPost = async (params: PostCredentials): Promise<Post> => {
 
     return data.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw error;
   }
 };

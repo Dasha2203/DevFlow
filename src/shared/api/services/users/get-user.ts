@@ -7,7 +7,7 @@ export const getUser = async (id: string | number): Promise<User> => {
 
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
     throw error;
   }
 };
