@@ -29,8 +29,7 @@ export const PostForm = ({ id, initialValues }: PostFormProps) => {
   const selectedLanguage = watch('language');
   const watchedValues = watch();
   const isChanged =
-    JSON.stringify(watchedValues) !==
-    JSON.stringify(initialValues || initialValues);
+    JSON.stringify(watchedValues) !== JSON.stringify(initialValues);
 
   const onSubmit = async (data: FormData) => {
     if (id) {
@@ -82,9 +81,7 @@ export const PostForm = ({ id, initialValues }: PostFormProps) => {
           helperText={errors.code?.message}
         />
 
-        {(errorCreate || errorUpdate) && (
-          <ErrorText text={errorCreate || errorUpdate || 'dsdsd'} />
-        )}
+        <ErrorText text={(errorCreate || errorUpdate) ?? ''} />
 
         <Button
           type="submit"
