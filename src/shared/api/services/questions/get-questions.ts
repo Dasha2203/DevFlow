@@ -1,0 +1,37 @@
+import { api } from '@api/api';
+import { GetQuestionsParams, QuestionsResponse } from '@api/types';
+
+export const getQuestions = async ({
+  page,
+  limit,
+  sortBy,
+  search,
+  userId,
+}: GetQuestionsParams = {}): Promise<QuestionsResponse> => {
+  try {
+    const params = new URLSearchParams();
+
+    const queryParams: Record<string, string | undefined> = {
+      page: page ? String(page) : undefined,
+      limit: limit ? String(limit) : undefined,
+      userId,
+      sortBy,
+      search,
+    };
+
+    Object.entries(queryParams).forEach(([key, value]) => {
+      if (value) {
+        params.set(key, value);
+      }
+    });
+
+    const { data } = await api.get<QuestionsResponse>('/questions', {
+      params,
+    });
+
+    return data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};

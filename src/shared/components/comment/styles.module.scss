@@ -1,0 +1,16 @@
+.comment {
+  min-width: 300px;
+  max-width: 80%;
+  width: 100%;
+
+  &__text {
+    margin-top: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+
+    &.no-wrap {
+      white-space: nowrap;
+    }
+  }
+}

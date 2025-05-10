@@ -1,0 +1,19 @@
+.loader {
+  margin-top: 80px;
+  margin-inline: auto;
+  display: block;
+}
+
+.no-result {
+  margin-top: 80px;
+}
+
+.posts-list {
+  margin-top: 25px;
+
+  &__pagination {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+  }
+}

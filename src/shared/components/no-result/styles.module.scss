@@ -1,0 +1,19 @@
+.no-result-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  & &__icon {
+    font-size: 80px;
+  }
+
+  &__title {
+    margin-top: 16px;
+  }
+
+  &__text {
+    margin-top: 8px;
+  }
+}

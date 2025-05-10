@@ -1,0 +1,13 @@
+.form {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  width: 100%;
+  gap: 30px;
+
+  h1 {
+    font-weight: bold;
+    text-align: center;
+  }
+}

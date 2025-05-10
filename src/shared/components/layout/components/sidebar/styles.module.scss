@@ -1,0 +1,8 @@
+.sidebar {
+  flex-shrink: 0;
+  &-header {
+    padding: 8px 16px;
+    display: flex;
+    justify-content: end;
+  }
+}
